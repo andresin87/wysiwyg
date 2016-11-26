@@ -55,5 +55,8 @@
   "bugs": {
     "url": "https://github.com/andresin87/wysiwyg/issues"
   },
-  "homepage": "https://github.com/andresin87/wysiwyg#readme"
+  "homepage": "https://github.com/andresin87/wysiwyg#readme",
+  "dependencies": {
+    "draft-js": "^0.9.1"
+  }
 }
