@@ -2,10 +2,10 @@
   "name": "wysiwyg",
   "version": "1.0.0",
   "description": "wysiwyg component",
-  "main": "index.js",
+  "main": "components/Wysiwyg/index.js",
   "scripts": {
     "start": "start-storybook -p 9001 -c .storybook",
-    "deploy-storybook": "storybook-to-ghpages"
+    "deploy": "storybook-to-ghpages"
   },
   "repository": {
     "type": "git",
