@@ -17,6 +17,7 @@
     "@kadira/react-storybook-addon-info": "3.0.9",
     "@kadira/storybook": "1.35.1",
     "@kadira/storybook-deployer": "^1.2.0",
+    "babel-plugin-tcomb": "^0.3.24",
     "babel-plugin-transform-react-jsx": "6.8.0",
     "babel-preset-es2015": "6.9.0",
     "babel-preset-react": "6.5.0",
@@ -47,6 +48,7 @@
     "stylelint": "7.5.0",
     "stylelint-config-standard": "14.0.0",
     "stylelint-webpack-plugin": "0.4.0",
+    "tcomb": "^3.2.15",
     "url-loader": "0.5.7"
   },
   "engines": {
@@ -57,6 +59,11 @@
   },
   "homepage": "https://github.com/andresin87/wysiwyg#readme",
   "dependencies": {
-    "draft-js": "^0.9.1"
+    "draft-js": "^0.9.1",
+    "draft-js-plugins-editor": "^2.0.0-beta1",
+    "draftjs-to-html": "^0.3.9",
+    "draftjs-to-markdown": "0.0.4",
+    "eslint-config-airbnb-flow": "^1.0.2",
+    "react-draft-wysiwyg": "^1.1.3"
   }
 }

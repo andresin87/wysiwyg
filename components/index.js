@@ -1,5 +1,5 @@
 /**
  * Created by alucas on 25/11/16.
  */
-export * from './TweetEditor';
-// export * from './Wysiwyg';
+export * from './react-draft-wysiwyg';
+
