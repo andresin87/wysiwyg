@@ -1,1 +1,985 @@
-@import './../../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
+//colors
+$seashell: #f1f1f1;
+$white: #fff;
+$color_silver_approx: #bfbdbd;
+$black: #000;
+$color_storm_dust_approx: #666;
+$color_wild_sand_approx: #f5f5f5;
+$color_denim_approx: #0a66b7;
+$color_cararra_approx: #ece9e9;
+$color_viking_approx: #6eb8d4;
+$color_mine_shaft_approx: #333;
+$gray: gray;
+$blue: blue;
+$color_blue_ribbon_approx: #1236ff;
+$color_twilight_blue_approx: #f0fbff;
+$color_manatee_approx: #9197a3;
+$color_french_gray_approx: #bdc1c9;
+
+//@extend-elements
+//original selectors
+//.rdw-dropdown-carettoclose, .rdw-dropdown-carettoopen
+%extend_1 {
+  height: 0;
+  width: 0;
+  position: absolute;
+  top: 35%;
+  right: 10%;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+}
+
+
+.rdw-option-wrapper {
+  border: 1px solid $seashell;
+  padding: 5px;
+  width: 25px;
+  height: 20px;
+  //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+  border-radius: 2px;
+  margin: 0 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  background: $white;
+  text-transform: capitalize;
+  &:hover {
+    //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+    box-shadow: 1px 1px 0 $color_silver_approx;
+  }
+  &:active {
+    //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+    box-shadow: inset 1px 1px 0 $color_silver_approx;
+  }
+}
+.rdw-option-active {
+  //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+  box-shadow: inset 1px 1px 0 $color_silver_approx;
+}
+.rdw-option-disabled {
+  opacity: .3;
+  cursor: default;
+}
+.rdw-dropdown-wrapper {
+  height: 30px;
+  cursor: pointer;
+  border: 1px solid $seashell;
+  //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+  border-radius: 2px;
+  margin: 0 3px;
+  text-transform: capitalize;
+  background: $white;
+  &:focus {
+    outline: none;
+  }
+  &:hover {
+    //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+    box-shadow: 1px 1px 0 $color_silver_approx;
+    background-color: $white;
+  }
+  &:active {
+    //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+    box-shadow: inset 1px 1px 0 $color_silver_approx;
+  }
+}
+.rdw-dropdown-carettoopen {
+  border-top: 6px solid $black;
+  @extend %extend_1;
+}
+.rdw-dropdown-carettoclose {
+  @extend %extend_1;
+  border-bottom: 6px solid $color_storm_dust_approx;
+}
+.rdw-dropdown-selectedtext {
+  display: flex;
+  position: relative;
+  height: 100%;
+  align-items: center;
+  padding: 0 5px;
+}
+.rdw-dropdown-optionwrapper {
+  z-index: 100;
+  position: relative;
+  border: 1px solid $seashell;
+  width: 98%;
+  background: $white;
+  //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+  border-radius: 2px;
+  margin: 0;
+  padding: 0;
+  &:hover {
+    //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+    box-shadow: 1px 1px 0 $color_silver_approx;
+    background-color: $white;
+  }
+}
+.rdw-dropdownoption-default {
+  min-height: 25px;
+  display: flex;
+  align-items: center;
+  padding: 0 5px;
+}
+.rdw-dropdownoption-highlighted {
+  background: $seashell;
+}
+.rdw-dropdownoption-active {
+  background: $color_wild_sand_approx;
+}
+.rdw-dropdownoption-disabled {
+  opacity: .3;
+  cursor: default;
+}
+.rdw-inline-wrapper {
+  display: flex;
+  margin-bottom: 6px;
+}
+.rdw-inline-dropdown {
+  width: 50px;
+}
+.rdw-inline-dropdownoption {
+  height: 40px;
+  display: flex;
+  justify-content: center;
+}
+.rdw-block-wrapper {
+  display: flex;
+  align-items: center;
+  margin-bottom: 6px;
+}
+.rdw-block-dropdown {
+  width: 110px;
+}
+.rdw-fontsize-wrapper {
+  display: flex;
+  align-items: center;
+  margin-bottom: 6px;
+}
+.rdw-fontsize-dropdown {
+  min-width: 40px;
+}
+.rdw-fontsize-option {
+  display: flex;
+  justify-content: center;
+}
+.rdw-fontfamily-wrapper {
+  display: flex;
+  align-items: center;
+  margin-bottom: 6px;
+}
+.rdw-fontfamily-dropdown {
+  width: 115px;
+}
+.rdw-fontfamily-placeholder {
+  white-space: nowrap;
+  max-width: 90px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.rdw-fontfamily-optionwrapper {
+  width: 140px;
+}
+.rdw-list-wrapper {
+  display: flex;
+  align-items: center;
+  margin-bottom: 6px;
+}
+.rdw-list-dropdown {
+  width: 50px;
+  z-index: 90;
+}
+.rdw-list-dropdownOption {
+  height: 40px;
+  display: flex;
+  justify-content: center;
+}
+.rdw-text-align-wrapper {
+  display: flex;
+  align-items: center;
+  margin-bottom: 6px;
+}
+.rdw-text-align-dropdown {
+  width: 50px;
+  z-index: 90;
+}
+.rdw-text-align-dropdownOption {
+  height: 40px;
+  display: flex;
+  justify-content: center;
+}
+.rdw-right-aligned-block {
+  justify-content: flex-end;
+  display: flex;
+  flex-direction: row;
+}
+.rdw-left-aligned-block {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+.rdw-center-aligned-block {
+  justify-content: center;
+  display: flex;
+  flex-direction: row;
+}
+.rdw-justify-aligned-block {
+  display: flex;
+  flex-direction: row;
+}
+.rdw-colorpicker-wrapper {
+  align-items: center;
+  margin-bottom: 6px;
+  position: relative;
+  display: flex;
+}
+.rdw-colorpicker-modal {
+  display: flex;
+  position: absolute;
+  top: 35px;
+  left: 5px;
+  flex-direction: column;
+  width: 175px;
+  height: 175px;
+  border: 1px solid $seashell;
+  padding: 15px;
+  //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+  border-radius: 2px;
+  z-index: 100;
+  background: $white;
+  //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+  box-shadow: 3px 3px 5px $color_silver_approx;
+}
+.rdw-colorpicker-modal-header {
+  display: flex;
+  padding-bottom: 5px;
+}
+.rdw-colorpicker-modal-style-label {
+  font-size: 15px;
+  width: 50%;
+  text-align: center;
+  cursor: pointer;
+  padding: 0 10px 5px;
+}
+.rdw-colorpicker-modal-style-label-active {
+  border-bottom: 2px solid $color_denim_approx;
+}
+.rdw-colorpicker-modal-options {
+  margin: 5px auto;
+  display: flex;
+  width: 170px;
+  flex-wrap: wrap;
+}
+.rdw-colorpicker-cube {
+  width: 22px;
+  height: 22px;
+  border: 1px solid $seashell;
+}
+.rdw-colorpicker-option {
+  margin: 3px;
+  padding: 0;
+  min-height: 20px;
+  border: none;
+  width: 22px;
+  height: 22px;
+  //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+  box-shadow: inset 1px 2px 1px $color_silver_approx;
+  &:hover {
+    //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+    box-shadow: 1px 2px 1px $color_silver_approx;
+  }
+  &:active {
+    //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+    box-shadow: -1px -2px 1px $color_silver_approx;
+  }
+}
+.rdw-colorpicker-option-active {
+  //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+  box-shadow: 0 0 2px 2px $color_silver_approx;
+}
+.rdw-remove-wrapper {
+  display: flex;
+  align-items: center;
+  margin-bottom: 6px;
+  position: relative;
+}
+.rdw-link-wrapper {
+  display: flex;
+  align-items: center;
+  margin-bottom: 6px;
+  position: relative;
+}
+.rdw-link-dropdown {
+  width: 50px;
+}
+.rdw-link-dropdownOption {
+  height: 40px;
+  display: flex;
+  justify-content: center;
+}
+.rdw-link-dropdownPlaceholder {
+  margin-left: 8px;
+}
+.rdw-link-modal {
+  position: absolute;
+  top: 35px;
+  left: 5px;
+  display: flex;
+  flex-direction: column;
+  width: 235px;
+  height: 180px;
+  border: 1px solid $seashell;
+  padding: 15px;
+  //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+  border-radius: 2px;
+  z-index: 100;
+  background: $white;
+  //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+  box-shadow: 3px 3px 5px $color_silver_approx;
+}
+.rdw-link-modal-label {
+  font-size: 15px;
+}
+.rdw-link-modal-input {
+  margin-top: 5px;
+  //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+  border-radius: 2px;
+  border: 1px solid $seashell;
+  height: 25px;
+  margin-bottom: 15px;
+  &:focus {
+    outline: none;
+  }
+}
+.rdw-link-modal-buttonsection {
+  margin: 0 auto;
+}
+.rdw-link-modal-btn {
+  margin-left: 10px;
+  width: 75px;
+  height: 30px;
+  border: 1px solid $seashell;
+  //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+  border-radius: 2px;
+  cursor: pointer;
+  background: $white;
+  text-transform: capitalize;
+  &:hover {
+    //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+    box-shadow: 1px 1px 0 $color_silver_approx;
+  }
+  &:active {
+    //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+    box-shadow: inset 1px 1px 0 $color_silver_approx;
+  }
+  &:focus {
+    outline: none!important;
+  }
+  &:disabled {
+    background: $color_cararra_approx;
+  }
+}
+.rdw-link-dropdownoption {
+  height: 40px;
+  display: flex;
+  justify-content: center;
+}
+.rdw-history-dropdown {
+  width: 50px;
+}
+.rdw-embedded-wrapper {
+  align-items: center;
+  margin-bottom: 6px;
+  position: relative;
+  display: flex;
+}
+.rdw-embedded-modal {
+  display: flex;
+  position: absolute;
+  top: 35px;
+  left: 5px;
+  flex-direction: column;
+  width: 235px;
+  height: 180px;
+  border: 1px solid $seashell;
+  padding: 15px;
+  //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+  border-radius: 2px;
+  z-index: 100;
+  background: $white;
+  //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+  box-shadow: 3px 3px 5px $color_silver_approx;
+}
+.rdw-embedded-modal-header {
+  font-size: 15px;
+  margin: 10px 0;
+  display: flex;
+}
+.rdw-embedded-modal-header-option {
+  width: 50%;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.rdw-embedded-modal-header-label {
+  width: 95px;
+  border: 1px solid $seashell;
+  margin-top: 5px;
+  background: $color_viking_approx;
+  border-bottom: 2px solid $color_denim_approx;
+}
+.rdw-embedded-modal-link-section {
+  display: flex;
+}
+.rdw-embedded-modal-link-input {
+  width: 90%;
+  height: 35px;
+  margin: 29px auto;
+  border: 1px solid $seashell;
+  //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+  border-radius: 2px;
+  font-size: 15px;
+  padding: 0 5px;
+  &:focus {
+    outline: none;
+  }
+}
+.rdw-embedded-modal-btn-section {
+  margin: 10px auto 0;
+}
+.rdw-embedded-modal-btn {
+  margin-left: 10px;
+  width: 75px;
+  height: 30px;
+  border: 1px solid $seashell;
+  //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+  border-radius: 2px;
+  cursor: pointer;
+  background: $white;
+  text-transform: capitalize;
+  &:hover {
+    //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+    box-shadow: 1px 1px 0 $color_silver_approx;
+  }
+  &:active {
+    //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+    box-shadow: inset 1px 1px 0 $color_silver_approx;
+  }
+  &:focus {
+    outline: none!important;
+  }
+  &:disabled {
+    background: $color_cararra_approx;
+  }
+}
+.rdw-emoji-wrapper {
+  align-items: center;
+  margin-bottom: 6px;
+  position: relative;
+  display: flex;
+}
+.rdw-emoji-modal {
+  display: flex;
+  overflow: auto;
+  position: absolute;
+  top: 35px;
+  left: 5px;
+  flex-wrap: wrap;
+  width: 235px;
+  height: 180px;
+  border: 1px solid $seashell;
+  padding: 15px;
+  //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+  border-radius: 2px;
+  z-index: 100;
+  background: $white;
+  //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+  box-shadow: 3px 3px 5px $color_silver_approx;
+}
+.rdw-emoji-icon {
+  margin: 2.5px;
+  height: 24px;
+  width: 24px;
+  cursor: pointer;
+  font-size: 22px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.rdw-spinner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  > div {
+    width: 12px;
+    height: 12px;
+    background-color: $color_mine_shaft_approx;
+    //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+    border-radius: 100%;
+    display: inline-block;
+    animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+  }
+  .rdw-bounce1 {
+    animation-delay: -.32s;
+  }
+  .rdw-bounce2 {
+    animation-delay: -.16s;
+  }
+}
+@-webkit-keyframes sk-bouncedelay {
+  0% {
+  }
+  80% {
+  }
+  to {
+  }
+  40% {
+  }
+}
+@keyframes sk-bouncedelay {
+  0% {
+    //Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+    transform: scale(0);
+  }
+  80% {
+    //Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+    transform: scale(0);
+  }
+  to {
+    //Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+    transform: scale(0);
+  }
+  40% {
+    //Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+    transform: scale(1);
+  }
+}
+.rdw-image-wrapper {
+  align-items: center;
+  margin-bottom: 6px;
+  position: relative;
+  display: flex;
+}
+.rdw-image-modal {
+  display: flex;
+  position: absolute;
+  top: 35px;
+  left: 5px;
+  flex-direction: column;
+  width: 235px;
+  height: 180px;
+  border: 1px solid $seashell;
+  padding: 15px;
+  //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+  border-radius: 2px;
+  z-index: 100;
+  background: $white;
+  //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+  box-shadow: 3px 3px 5px $color_silver_approx;
+}
+.rdw-image-modal-header {
+  font-size: 15px;
+  margin: 10px 0;
+  display: flex;
+}
+.rdw-image-modal-header-option {
+  width: 50%;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.rdw-image-modal-header-label {
+  width: 80px;
+  background: $seashell;
+  border: 1px solid $seashell;
+  margin-top: 5px;
+}
+.rdw-image-modal-header-label-highlighted {
+  background: $color_viking_approx;
+  border-bottom: 2px solid $color_denim_approx;
+}
+.rdw-image-modal-upload-option {
+  height: 75px;
+  width: 100%;
+  color: $gray;
+  cursor: pointer;
+  display: flex;
+  border: none;
+  font-size: 15px;
+  align-items: center;
+  justify-content: center;
+  background-color: $seashell;
+  outline: 2px dashed $gray;
+  outline-offset: -10px;
+  margin: 10px 0;
+}
+.rdw-image-modal-upload-option-highlighted {
+  outline: 2px dashed $color_denim_approx;
+}
+.rdw-image-modal-upload-option-label {
+  cursor: pointer;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.rdw-image-modal-upload-option-input {
+  width: .1px;
+  height: .1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+.rdw-image-modal-url-section {
+  display: flex;
+}
+.rdw-image-modal-url-input {
+  width: 90%;
+  height: 35px;
+  margin: 29px auto;
+  border: 1px solid $seashell;
+  //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+  border-radius: 2px;
+  font-size: 15px;
+  padding: 0 5px;
+  &:focus {
+    outline: none;
+  }
+}
+.rdw-image-modal-btn-section {
+  margin: 10px auto 0;
+}
+.rdw-image-modal-btn {
+  margin-left: 10px;
+  width: 75px;
+  height: 30px;
+  border: 1px solid $seashell;
+  //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+  border-radius: 2px;
+  cursor: pointer;
+  background: $white;
+  text-transform: capitalize;
+  &:hover {
+    //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+    box-shadow: 1px 1px 0 $color_silver_approx;
+  }
+  &:active {
+    //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+    box-shadow: inset 1px 1px 0 $color_silver_approx;
+  }
+  &:focus {
+    outline: none!important;
+  }
+  &:disabled {
+    background: $color_cararra_approx;
+  }
+}
+.rdw-image-modal-spinner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: .5;
+}
+.rdw-history-wrapper {
+  align-items: center;
+  margin-bottom: 6px;
+  display: flex;
+}
+.rdw-history-dropdownoption {
+  display: flex;
+  height: 40px;
+  justify-content: center;
+}
+.rdw-link-decorator-wrapper {
+  position: relative;
+}
+.rdw-link-decorator-link {
+  color: $blue;
+  text-decoration: underline;
+}
+.rdw-link-decorator-icon {
+  position: absolute;
+  left: 40%;
+  top: 0;
+  cursor: pointer;
+  background-color: $white;
+}
+.rdw-mention {
+  color: $color_blue_ribbon_approx;
+  background-color: $color_twilight_blue_approx;
+  padding: 1px 2px;
+  //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+  border-radius: 2px;
+}
+.rdw-suggestion-wrapper {
+  position: relative;
+}
+.rdw-suggestion-dropdown {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid $seashell;
+  min-width: 100px;
+  max-height: 150px;
+  overflow: auto;
+  background: $white;
+  z-index: 100;
+}
+.rdw-suggestion-option {
+  padding: 7px 5px;
+  border-bottom: 1px solid $seashell;
+  &:hover {
+    background-color: $seashell;
+  }
+}
+.rdw-image-alignment-options-popup {
+  position: absolute;
+  background: $white;
+  display: flex;
+  padding: 5px 2px;
+  //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+  border-radius: 2px;
+  border: 1px solid $seashell;
+  width: 105px;
+  cursor: pointer;
+  z-index: 100;
+}
+.rdw-alignment-option-left {
+  justify-content: flex-start;
+}
+.rdw-image-alignment-option {
+  height: 15px;
+  width: 15px;
+}
+.rdw-image-alignment {
+  position: relative;
+}
+.rdw-image-imagewrapper {
+  position: relative;
+}
+.rdw-image-center {
+  float: none;
+  display: flex;
+  justify-content: center;
+}
+.rdw-image-left {
+  float: left;
+}
+.rdw-image-right {
+  float: right;
+}
+.rdw-editor-main {
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+}
+.rdw-editor-toolbar {
+  padding: 6px 5px 0;
+  //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+  border-radius: 2px;
+  border: 1px solid $seashell;
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+  background: $white;
+  flex-wrap: wrap;
+  font-size: 15px;
+  margin-bottom: 5px;
+  //Instead of the line below you could use @include user-select($select)
+  user-select: none;
+}
+.DraftEditor-editorContainer {
+  height: inherit;
+  text-align: initial;
+  background-color: hsla(0,0%,100%,0);
+  border-left: .1px solid transparent;
+  position: relative;
+  z-index: 1;
+}
+.DraftEditor-root {
+  height: inherit;
+  text-align: initial;
+  position: relative;
+}
+.public-DraftEditor-content {
+  height: inherit;
+  text-align: initial;
+}
+.public-DraftEditor-block {
+  position: relative;
+}
+.DraftEditor-alignLeft {
+  .public-DraftStyleDefault-block {
+    text-align: left;
+  }
+  .public-DraftEditorplaceholder-root {
+    left: 0;
+    text-align: left;
+  }
+}
+.DraftEditor-alignCenter {
+  .public-DraftStyleDefault-block {
+    text-align: center;
+  }
+  .public-DraftEditorplaceholder-root {
+    margin: 0 auto;
+    text-align: center;
+    width: 100%;
+  }
+}
+.DraftEditor-alignRight {
+  .public-DraftStyleDefault-block {
+    text-align: right;
+  }
+  .public-DraftEditorplaceholder-root {
+    right: 0;
+    text-align: right;
+  }
+}
+.public-DraftEditorplaceholder-root {
+  color: $color_manatee_approx;
+  position: absolute;
+  z-index: 0;
+}
+.public-DraftEditorplaceholder-hasFocus {
+  color: $color_french_gray_approx;
+}
+.DraftEditorplaceholder-hidden {
+  display: none;
+}
+.public-DraftStyleDefault-block {
+  position: relative;
+  white-space: pre-wrap;
+}
+.public-DraftStyleDefault-ltr {
+  direction: ltr;
+  text-align: left;
+}
+.public-DraftStyleDefault-rtl {
+  direction: rtl;
+  text-align: right;
+}
+.public-DraftStyleDefault-listLTR {
+  direction: ltr;
+}
+.public-DraftStyleDefault-listRTL {
+  direction: rtl;
+}
+.public-DraftStyleDefault-ol {
+  margin: 16px 0;
+  padding: 0;
+}
+.public-DraftStyleDefault-ul {
+  margin: 16px 0;
+  padding: 0;
+}
+.public-DraftStyleDefault-depth0 {
+  &.public-DraftStyleDefault-listLTR {
+    margin-left: 1.5em;
+  }
+  &.public-DraftStyleDefault-listRTL {
+    margin-right: 1.5em;
+  }
+  &.public-DraftStyleDefault-reset {
+    counter-reset: ol0;
+  }
+}
+.public-DraftStyleDefault-depth1 {
+  &.public-DraftStyleDefault-listLTR {
+    margin-left: 3em;
+  }
+  &.public-DraftStyleDefault-listRTL {
+    margin-right: 3em;
+  }
+  &.public-DraftStyleDefault-reset {
+    counter-reset: ol1;
+  }
+}
+.public-DraftStyleDefault-depth2 {
+  &.public-DraftStyleDefault-listLTR {
+    margin-left: 4.5em;
+  }
+  &.public-DraftStyleDefault-listRTL {
+    margin-right: 4.5em;
+  }
+  &.public-DraftStyleDefault-reset {
+    counter-reset: ol2;
+  }
+}
+.public-DraftStyleDefault-depth3 {
+  &.public-DraftStyleDefault-listLTR {
+    margin-left: 6em;
+  }
+  &.public-DraftStyleDefault-listRTL {
+    margin-right: 6em;
+  }
+  &.public-DraftStyleDefault-reset {
+    counter-reset: ol3;
+  }
+}
+.public-DraftStyleDefault-depth4 {
+  &.public-DraftStyleDefault-listLTR {
+    margin-left: 7.5em;
+  }
+  &.public-DraftStyleDefault-listRTL {
+    margin-right: 7.5em;
+  }
+  &.public-DraftStyleDefault-reset {
+    counter-reset: ol4;
+  }
+}
+.public-DraftStyleDefault-unorderedListItem {
+  list-style-type: square;
+  position: relative;
+  &.public-DraftStyleDefault-depth0 {
+    list-style-type: disc;
+  }
+  &.public-DraftStyleDefault-depth1 {
+    list-style-type: circle;
+  }
+}
+.public-DraftStyleDefault-orderedListItem {
+  list-style-type: none;
+  position: relative;
+  &:before {
+    content: counter(ol0) ". ";
+    counter-increment: ol0;
+  }
+  &.public-DraftStyleDefault-listLTR:before {
+    left: -36px;
+    position: absolute;
+    text-align: right;
+    width: 30px;
+  }
+  &.public-DraftStyleDefault-listRTL:before {
+    position: absolute;
+    right: -36px;
+    text-align: left;
+    width: 30px;
+  }
+  &.public-DraftStyleDefault-depth1:before {
+    content: counter(ol1) ". ";
+    counter-increment: ol1;
+  }
+  &.public-DraftStyleDefault-depth2:before {
+    content: counter(ol2) ". ";
+    counter-increment: ol2;
+  }
+  &.public-DraftStyleDefault-depth3:before {
+    content: counter(ol3) ". ";
+    counter-increment: ol3;
+  }
+  &.public-DraftStyleDefault-depth4:before {
+    content: counter(ol4) ". ";
+    counter-increment: ol4;
+  }
+}

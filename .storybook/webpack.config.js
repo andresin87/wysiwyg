@@ -67,20 +67,6 @@ var config = {
       },
     ],
   },
-  plugins: [
-    new StyleLintPlugin({
-      configFile: path.resolve(__dirname, '../.stylelintrc'),
-      files: [ 'components/**/*.scss', 'assets/stylesheets/**/*.scss'],
-      syntax: 'scss',
-      failOnError: false,
-      reporters: [
-        {formatter: 'verbose', console: true}  // If formatter is set to 'verbose' you'll see a lot of info about linter, eitherway you can set it to 'string' to get less information
-      ]
-    }),
-    "syntax-flow",
-    "tcomb",
-    "transform-flow-strip-types"
-  ],
   output: {
     path: DIST_DIR,
     filename: '/assets/js/bundle.js'
