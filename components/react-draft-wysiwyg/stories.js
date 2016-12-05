@@ -3,7 +3,7 @@
  */
 import React, { Component } from 'react';
 import { storiesOf } from '@kadira/storybook';
-import { Col } from 'react-bootstrap';
+import { Row, Col } from 'react-bootstrap';
 import { Wysiwyg } from '../';
 
 import draftToHtml from 'draftjs-to-html';
@@ -50,7 +50,10 @@ class TextArea extends Component {
     const value = (this.state && this.state.value) ? this.state.value : '';
     return (
       <textarea
-        style={{ height: 200 }}
+        style={{
+          height: 200,
+          width: '100%',
+        }}
         className={className}
         disabled={disabled}
         value={value}
@@ -132,6 +135,103 @@ storiesOf('Wysiwyg', module)
               value=""
             />
           </Col>
+        </div>
+      </div>
+    ); })
+  .add('Output generated in JSON', (self) => {
+    const me = self;
+    return (
+      <div className="container">
+        <h1>
+          Editor with output generated in JSON.
+        </h1>
+        <div className="demo-editorSection">
+          <Col xs={8}>
+            <Wysiwyg
+              toolbarClassName="demo-toolbar"
+              wrapperClassName="demo-wrapper"
+              editorClassName="demo-editor"
+              ref={(c) => { me.wysiwyg = c; }}
+              onChange={(c) => {
+                me.wysiwyg.onEditorChange(c, 0);
+                if (me.textArea) {
+                  me.textArea.setValue(JSON.stringify(me.wysiwyg.state.editorContents[0], null, '\t'));
+                }
+              }}
+              uploadCallback={uploadImageCallBack}
+            />
+          </Col>
+          <Col xs={4}>
+            <TextArea
+              disabled
+              className="demo-content no-focus"
+              ref={(c) => { me.textArea = c; }}
+              value=""
+            />
+          </Col>
+        </div>
+      </div>
+    ); })
+  .add('Output generated', (self) => {
+    const me = self;
+    return (
+      <div className="container">
+        <h1>
+          Editor with 3 output generated.
+        </h1>
+        <div className="demo-editorSection">
+          <Row>
+            <Col xs={12}>
+              <Wysiwyg
+                toolbarClassName="demo-toolbar"
+                wrapperClassName="demo-wrapper"
+                editorClassName="demo-editor"
+                ref={(c) => { me.wysiwyg = c; }}
+                onChange={(c) => {
+                  me.wysiwyg.onEditorChange(c, 0);
+                  if (me.textAreaHTML) {
+                    me.textAreaHTML.setValue(draftToHtml(me.wysiwyg.state.editorContents[0], null, '\t'));
+                  }
+                  if (me.textAreaMarkDown) {
+                    me.textAreaMarkDown.setValue(draftToMarkdown(me.wysiwyg.state.editorContents[0], null, '\t'));
+                  }
+                  if (me.textAreaJSON) {
+                    me.textAreaJSON.setValue(JSON.stringify(me.wysiwyg.state.editorContents[0], null, '\t'));
+                  }
+                }}
+                uploadCallback={uploadImageCallBack}
+              />
+            </Col>
+          </Row>
+          <Row>
+            <Col xs={4}>
+              <h1>HTML</h1>
+              <TextArea
+                disabled
+                className="demo-content no-focus"
+                ref={(c) => { me.textAreaHTML = c; }}
+                value=""
+              />
+            </Col>
+            <Col xs={4}>
+              <h1>MarkDown</h1>
+              <TextArea
+                disabled
+                className="demo-content no-focus"
+                ref={(c) => { me.textAreaMarkDown = c; }}
+                value=""
+              />
+            </Col>
+            <Col xs={4}>
+              <h1>JSON</h1>
+              <TextArea
+                disabled
+                className="demo-content no-focus"
+                ref={(c) => { me.textAreaJSON = c; }}
+                value=""
+              />
+            </Col>
+          </Row>
         </div>
       </div>
     ); })
