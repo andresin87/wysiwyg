@@ -59,3 +59,44 @@ export const sampleToolbar = {
     redo: { icon: redo, className: 'demo-option-custom' },
   },
 };
+
+export const sampleToolbar2 = {
+  inline: {
+    bold: { icon: null, className: 'ico ico-android' },
+    italic: { icon: null, className: 'ico ico-apple' },
+    underline: { icon: null, className: 'ico ico-beta' },
+    strikethrough: { icon: null, className: 'ico ico-cake' },
+    monospace: { className: 'demo-option-custom' },
+    superscript: { icon: superscript, className: 'demo-option-custom' },
+    subscript: { icon: subscript, className: 'demo-option-custom' },
+  },
+  blockType: { className: 'demo-option-custom-wide', dropdownClassName: 'demo-dropdown-custom' },
+  fontSize: { className: 'demo-option-custom-medium' },
+  list: {
+    unordered: { icon: unordered, className: 'demo-option-custom' },
+    ordered: { icon: ordered, className: 'demo-option-custom' },
+    indent: { icon: indent, className: 'demo-option-custom' },
+    outdent: { icon: outdent, className: 'demo-option-custom' },
+  },
+  textAlign: {
+    left: { icon: left, className: 'demo-option-custom' },
+    center: { icon: center, className: 'demo-option-custom' },
+    right: { icon: right, className: 'demo-option-custom' },
+    justify: { icon: justify, className: 'demo-option-custom' },
+  },
+  fontFamily: { className: 'demo-option-custom-wide', dropdownClassName: 'demo-dropdown-custom' },
+  colorPicker: { className: 'demo-option-custom', popupClassName: 'demo-popup-custom' },
+  link: {
+    popupClassName: 'demo-popup-custom',
+    link: { icon: link, className: 'demo-option-custom' },
+    unlink: { icon: unlink, className: 'demo-option-custom' },
+  },
+  emoji: { className: 'demo-option-custom', popupClassName: 'demo-popup-custom' },
+  embedded: { className: 'demo-option-custom', popupClassName: 'demo-popup-custom' },
+  image: { icon: image, className: 'demo-option-custom', popupClassName: 'demo-popup-custom' },
+  remove: { icon: eraser, className: 'demo-option-custom' },
+  history: {
+    undo: { icon: undo, className: 'demo-option-custom' },
+    redo: { icon: redo, className: 'demo-option-custom' },
+  },
+};

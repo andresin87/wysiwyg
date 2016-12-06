@@ -15,7 +15,7 @@ import uploadImageCallBack from './util/uploadImageCallBack';
 import sampleEditorContent from './util/sampleEditorContent';
 import { initialContentState } from './util/sampleEditorContentLink';
 import { sampleMentionsArray } from './util/sampleMentionsContent';
-import { sampleToolbar } from './util/sampleToolbar';
+import { sampleToolbar, sampleToolbar2 } from './util/sampleToolbar';
 
 
 storiesOf('Wysiwyg', module)
@@ -338,6 +338,17 @@ storiesOf('Wysiwyg', module)
       <i className="uz-icons-android" />
     </div>
   ))
+.add('Editor toolbar with custom font icons and styling.', () => (
+  <div className="container">
+    <Wysiwyg
+      toolbarClassName="demo-toolbar-custom"
+      wrapperClassName="demo-wrapper-wide"
+      editorClassName="demo-editor-custom"
+      toolbar={sampleToolbar2}
+    />
+    <i className="uz-icons-android" />
+  </div>
+))
   .add('container', () => (
     <div className="container">
 
