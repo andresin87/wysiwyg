@@ -34,10 +34,10 @@ Wysiwyg.propTypes = {
   onChange: React.PropTypes.func,
 };
 
-Wysiwyg.defaultProps = {
-  onChange: () => {
-    console.log('onChange');
-  },
-};
+// Wysiwyg.defaultProps = {
+//   onChange: () => {
+//     console.log('onChange');
+//   },
+// };
 
 export { Wysiwyg };

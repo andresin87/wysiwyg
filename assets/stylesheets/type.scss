@@ -1,0 +1,75 @@
+// Basic UZ styles for typography - reset from bootstrap
+
+// @import 'uz-variables';
+
+// Headings
+// -------------------------
+
+h1, .h1,
+h3, .h3 {
+    font-family: $font-open-sans-bold;
+    text-transform: uppercase;
+    font-weight: normal;
+    line-height: initial;
+}
+
+h2, .h2 {
+    font-family: $font-open-sans-light;
+    font-weight: normal;
+    line-height: initial;
+}
+
+h4, .h4 {
+    font-family: $font-open-sans;
+    font-weight: normal;
+    line-height: initial;
+}
+
+h5, .h5 {
+    font-family: $font-open-sans-bold;
+    font-weight: normal;
+    line-height: initial;
+}
+
+h6, .h6 {
+    font-family: $font-open-sans-semibold;
+    font-weight: normal;
+    line-height: initial;
+}
+
+h1, .h1, h2, .h2, h3, .h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+h1, .h1 { font-size: $font-size-h1; }
+h2, .h2 { font-size: $font-size-h2; }
+h3, .h3 { font-size: $font-size-h3; }
+h4, .h4 { font-size: $font-size-h4; }
+h5, .h5 { font-size: $font-size-h5; }
+h6, .h6 { font-size: $font-size-h6; }
+
+
+// Body text
+// -------------------------
+
+p {
+    color: $paragraph-color;
+    font-size: 14px;
+    font-family: $font-open-sans;
+    font-weight: normal;
+}
+
+// General styles for weight changes
+.light {
+    font-family: $font-open-sans-light;
+    font-weight: normal;
+}
+.semi-bold {
+    font-family: $font-open-sans-semibold;
+    font-weight: normal;
+}
+.bold {
+    font-family: $font-open-sans-bold;
+    font-weight: normal;
+}

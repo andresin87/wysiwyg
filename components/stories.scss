@@ -41,9 +41,10 @@
 @import "../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/close";
 
 // // Custom components from the scratch
-// @import "../assets/stylesheets/uz-fontface";
-// @import "../assets/stylesheets/uz-icons"; // custom icons for UZ
-// @import "../assets/stylesheets/uz-callout";
+@import "../assets/stylesheets/variables";
+@import "../assets/stylesheets/fontface";
+@import "../assets/stylesheets/type";
+@import "../assets/stylesheets/icons"; // custom icons for UZ
 
 // // Utility classes
 @import "../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/utilities";
@@ -51,3 +52,4 @@
 
 
 @import './index';
+@import "./react-draft-wysiwyg/stories";

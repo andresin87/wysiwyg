@@ -1,0 +1,121 @@
+//
+// Variables
+// --------------------------------------------------
+
+// @import "uz-fontface";
+
+//== Typography
+//
+//## Font, line-height, and color for body text, headings, and more.
+
+// Font families
+$font-open-sans: montserrat, open_sans_regular, sans-serif;
+$font-open-sans-light: montserrat, open_sans_light, sans-serif;
+$font-open-sans-semibold: montserrat, open_sans_semibold, sans-serif;
+$font-open-sans-bold: montserrat_bold, open_sans_bold, sans-serif;
+$uz-icons: uz-icons;
+
+// Heights
+$font-size-h1: 30px;
+$font-size-h2: 35px;
+$font-size-h3: 18px;
+$font-size-h4: 18px;
+$font-size-h5: 15px;
+$font-size-h6: 14px;
+
+// Colors
+$headings-color: #283544;
+$paragraph-color: #5b6c7f;
+$paragraph-error-color: #d0021b;
+$white: #fff;
+$box-border-color: #e5ecf0;
+
+
+//== Buttons
+//
+//## For each of UZ-Bootstrap's buttons, define text, background and border color.
+
+// Primary button
+$btn-primary-color: $white;
+$btn-primary-bg: #0079e5;
+$btn-primary-border: $btn-primary-bg;
+// Hover Colors
+$btn-primary-hover-bg: #50adff;
+$btn-primary-hover-border: rgba(80,173,255,.33);
+// Disabled State
+$btn-primary-disabled-bg: rgba(0,120,229,.33);
+
+// Secondary button
+$btn-secondary-color: $white;
+$btn-secondary-bg: #597390;
+$btn-secondary-border: $btn-secondary-bg;
+// Hover Colors
+$btn-secondary-hover-bg: #799dc5;
+$btn-secondary-hover-border: $btn-secondary-hover-bg;
+
+// Cancel button
+$btn-cancel-color: #597390;
+$btn-cancel-bg: $white;
+$btn-cancel-border: $btn-cancel-color;
+// Hover Colors
+$btn-cancel-hover-color: $white;
+$btn-cancel-hover-bg: $btn-cancel-color;
+$btn-cancel-hover-border: $btn-cancel-color;
+
+// Edit button
+$btn-edit-color: $white;
+$btn-edit-bg: #cb3300;
+$btn-edit-border: $btn-edit-bg;
+// Hover Colors
+$btn-edit-hover-bg: #ef6131;
+$btn-edit-hover-border: $btn-edit-hover-bg;
+
+// Disregard button
+$btn-disregard-color: #cb3300;
+$btn-disregard-bg: $white;
+$btn-disregard-border: $btn-disregard-color;
+// Hover Colors
+$btn-disregard-hover-color: $white;
+$btn-disregard-hover-bg: $btn-disregard-color;
+$btn-disregard-hover-border: $btn-disregard-color;
+
+//** Default label text color
+$label-color: #384452;
+$label-hover-color: $btn-primary-bg;
+//** Default text color of a linked label
+$label-link-hover-color: #333;
+
+$input-active-color: $btn-primary-bg;
+
+$input-color-placeholder: #b2bdc9;
+$input-color: #5b6c7f;
+$input-border: #9eadbb;
+
+
+//== Forms
+//
+//##
+
+//** `.form-group` margin
+$form-group-margin-bottom: 25px;
+
+
+//== Form states and alerts
+//
+//## Define colors for form feedback states and, by default, alerts.
+
+$state-success-text: #3c763d;
+$state-success-bg: #dff0d8;
+$state-success-border: $state-success-bg;
+
+$state-info-text: #31708f;
+$state-info-bg: #d9edf7;
+$state-info-border: $state-info-bg;
+
+$state-warning-text: #8a6d3b;
+$state-warning-bg: #fcf8e3;
+$state-warning-border: $state-warning-bg;
+
+$state-danger-text: #CB3300;
+$state-danger-bg: #CB3300;
+$state-danger-border: $state-danger-bg;
