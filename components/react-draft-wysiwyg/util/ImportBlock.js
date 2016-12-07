@@ -21,8 +21,6 @@ class ImportBlock extends Component {
   render() {
     let value = (this.state && this.state.value) ? this.state.value : null;
     value = (!value && this.props.value) ? this.props.value : value;
-    console.log('state', this.state);
-    console.log('state', value);
     let textareaValue = (this.textarea && this.textarea.state && this.textarea.state.value) ? this.textarea.state.value : null;
     const contentState = textareaValue ? convertToRaw(ContentState.createFromBlockArray(convertFromHTML(textareaValue))) : null;
     return (
@@ -35,7 +33,6 @@ class ImportBlock extends Component {
             }}
             value={value}
             onChange={() => {
-              console.log(this);
               this.setState({ value: textareaValue });
             }}
           />
