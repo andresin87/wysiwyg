@@ -7,6 +7,7 @@ import { Row, Col } from 'react-bootstrap';
 import { Wysiwyg } from '../';
 
 import draftToHtml from 'draftjs-to-html';
+import { stateToHTML } from 'draft-js-export-html';
 import draftToMarkdown from 'draftjs-to-markdown';
 
 import { convertToRaw, ContentState, convertFromHTML } from 'draft-js';
@@ -58,6 +59,124 @@ storiesOf('Wysiwyg', module)
       </div>
     </div>
   ))
+  .add('RTLCoreStyles', (self) => {
+    const me = self;
+    const options = {
+      inlineStyles: {
+        // Override default element (`strong`).
+        BOLD: { element: 'b' },
+        ITALIC: {
+          // Add custom attributes. You can also use React-style `className`.
+          attributes: { class: 'foo' },
+          // Use camel-case. Units (`px`) will be added where necessary.
+          style: { fontSize: 12 },
+        },
+      },
+    };
+    return (
+      <div className="container">
+        <h1>
+          RTLCoreStyles.
+        </h1>
+        <div className="demo-editorSection">
+          <Row>
+            <Col
+              sm={2}
+            >
+              <a href="https://gitcdn.xyz/repo/andresin87/wysiwyg/master/components/react-draft-wysiwyg/util/LoremIpsum.docx">
+                <span className="fa-stack fa-5x">
+                  <i className="fa fa-square-o fa-stack-2x" />
+                  <i className="fa fa-file-word-o fa-stack-1x" />
+                </span>
+              </a>
+            </Col>
+            <Col
+              sm={10}
+            >
+              <h1>
+                RTLCoreStyles Config Options.
+              </h1>
+              <Wysiwyg
+                toolbarClassName="demo-toolbar"
+                wrapperClassName="demo-wrapper-auto"
+                editorClassName="demo-editor"
+                ref={(c) => { me.wysiwyg = c; }}
+                onChange={(c) => {
+                  me.wysiwyg.onEditorChange(c, 0);
+                  if (me.textArea) {
+                    me.textAreaOut1.setValue(draftToHtml(me.wysiwyg.state.editorContents[0]));
+                    me.textAreaOut2.setValue(stateToHTML((ContentState.createFromBlockArray(convertFromHTML(draftToHtml(me.wysiwyg.state.editorContents[0])))), options));
+                    me.textArea.setValue(JSON.stringify(options, null, '\t'));
+                    me.html1.setValue(draftToHtml(me.wysiwyg.state.editorContents[0]));
+                    me.html2.setValue(stateToHTML((ContentState.createFromBlockArray(convertFromHTML(draftToHtml(me.wysiwyg.state.editorContents[0])))), options));
+                  }
+                }}
+                initialContentState={convertToRaw(ContentState.createFromBlockArray(convertFromHTML('<p><h5>title</h5></p><p><strong>bold</strong> <em>italic</em></p>')))}
+                toolbarOnFocus
+              />
+            </Col>
+          </Row>
+          <Row>
+            <Col
+              sm={12}
+            >
+              <h4>Config Options</h4>
+              <TextArea
+                disabled
+                className="demo-content no-focus"
+                ref={(c) => { me.textArea = c; }}
+                value=""
+              />
+            </Col>
+          </Row>
+          <Row>
+            <Col
+              sm={6}
+            >
+              <h4>HTML5 normal export</h4>
+              <TextArea
+                disabled
+                className="demo-content no-focus"
+                ref={(c) => { me.textAreaOut1 = c; }}
+                value=""
+              />
+            </Col>
+            <Col
+              sm={6}
+            >
+              <h4>HTML5 RTLCoreStyles export</h4>
+              <TextArea
+                disabled
+                className="demo-content no-focus"
+                ref={(c) => { me.textAreaOut2 = c; }}
+                value=""
+              />
+            </Col>
+          </Row>
+          <Row>
+            <Col
+              sm={6}
+            >
+              <h4>HTML5 Content</h4>
+              <Html
+                ref={(c) => { me.html1 = c; }}
+                value=""
+              />
+            </Col>
+            <Col
+              sm={6}
+            >
+              <h4>HTML5 RTL Content</h4>
+              <Html
+                ref={(c) => { me.html2 = c; }}
+                value=""
+              />
+            </Col>
+          </Row>
+        </div>
+      </div>
+    );
+  })
   .add('Paste From Word', (self) => {
     const me = self;
     return (

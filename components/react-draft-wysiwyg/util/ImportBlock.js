@@ -3,21 +3,18 @@
  */
 import React, { Component } from 'react';
 import { Col } from 'react-bootstrap';
+import { convertToRaw, ContentState, convertFromHTML } from 'draft-js';
 
 import { Wysiwyg } from '../';
 import { TextArea } from './TextArea';
 
+
 class ImportBlock extends Component {
-  // constructor() {
-  //   super();
-  // }
+
   componentWillUpdate() {
-    console.log(this);
     if (!(this.state)) {
       this.setState({ value: this.props.value });
-      console.log('setState prop', this.props.value);
     } else if (this.textarea.state.value !== this.state.value) {
-      console.log('setState TextArea', this.textarea.state.value);
       this.setState({ value: this.textarea.state.value });
     }
   }
@@ -26,21 +23,32 @@ class ImportBlock extends Component {
     value = (!value && this.props.value) ? this.props.value : value;
     console.log('state', this.state);
     console.log('state', value);
+    let textareaValue = (this.textarea && this.textarea.state && this.textarea.state.value) ? this.textarea.state.value : null;
+    const contentState = textareaValue ? convertToRaw(ContentState.createFromBlockArray(convertFromHTML(textareaValue))) : null;
     return (
       <div>
         <Col xs={4}>
+          <p>{'<h5>hola mundo</h5>'}</p>
           <TextArea
             ref={(c) => {
               this.textarea = c;
             }}
             value={value}
-            onChange={(() => {
-              // this.props.value = this.textarea.props.value;
-            })()}
+            onChange={() => {
+              console.log(this);
+              this.setState({ value: textareaValue });
+            }}
           />
         </Col>
         <Col xs={8}>
-          <Wysiwyg />
+          <Wysiwyg
+            toolbarClassName="demo-toolbar"
+            wrapperClassName="demo-wrapper-auto"
+            editorClassName="demo-editor"
+            ref={(c) => { this.wysiwyg = c; }}
+            initialContentState={textareaValue}
+            contentState={contentState}
+          />
         </Col>
       </div>
     );
@@ -49,6 +57,7 @@ class ImportBlock extends Component {
 
 ImportBlock.propTypes = {
   value: React.PropTypes.string,
+  onChange: React.PropTypes.func,
 };
 
 export { ImportBlock };

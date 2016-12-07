@@ -569,8 +569,8 @@ $color_french_gray_approx: #bdc1c9;
   top: 35px;
   left: 5px;
   flex-direction: column;
-  width: 235px;
-  height: 180px;
+  width: auto;
+  height: auto;
   border: 1px solid $seashell;
   padding: 15px;
   //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
@@ -604,8 +604,8 @@ $color_french_gray_approx: #bdc1c9;
   border-bottom: 2px solid $color_denim_approx;
 }
 .rdw-image-modal-upload-option {
-  height: 75px;
-  width: 100%;
+  height: auto;
+  width: auto;
   color: $gray;
   cursor: pointer;
   display: flex;
@@ -623,8 +623,8 @@ $color_french_gray_approx: #bdc1c9;
 }
 .rdw-image-modal-upload-option-label {
   cursor: pointer;
-  height: 100%;
-  width: 100%;
+  height: 80px;
+  width: 140px;
   display: flex;
   justify-content: center;
   align-items: center;
