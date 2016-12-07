@@ -12,6 +12,7 @@ import draftToMarkdown from 'draftjs-to-markdown';
 import { convertToRaw, ContentState, convertFromHTML } from 'draft-js';
 
 import { TextArea } from './util/TextArea';
+import { Html } from './util/Html';
 import { ImportBlock } from './util/ImportBlock';
 
 import uploadImageCallBack from './util/uploadImageCallBack';
@@ -33,6 +34,94 @@ storiesOf('Wysiwyg', module)
       </div>
     </div>
   ))
+  .add('Upload Image', () => (
+    <div className="container">
+      <h1>
+        Upload Image.
+      </h1>
+      <div className="demo-editorSection">
+        <Col sm={12}>
+          <Wysiwyg
+            toolbarClassName="demo-toolbar"
+            wrapperClassName="demo-wrapper-wide"
+            editorClassName="demo-editor"
+            uploadCallback={uploadImageCallBack}
+            toolbar={{
+              inline: { inDropdown: true },
+              list: { inDropdown: true },
+              textAlign: { inDropdown: true },
+              link: { inDropdown: true },
+              history: { inDropdown: true },
+            }}
+          />
+        </Col>
+      </div>
+    </div>
+  ))
+  .add('Paste From Word', (self) => {
+    const me = self;
+    return (
+      <div className="container">
+        <h1>
+          Paste From Word.
+        </h1>
+        <div className="demo-editorSection">
+          <Row>
+            <Col
+              sm={2}
+            >
+              <a href="https://gitcdn.xyz/repo/andresin87/wysiwyg/master/components/react-draft-wysiwyg/util/LoremIpsum.docx">
+                <span className="fa-stack fa-5x">
+                  <i className="fa fa-square-o fa-stack-2x" />
+                  <i className="fa fa-file-word-o fa-stack-1x" />
+                </span>
+              </a>
+            </Col>
+            <Col
+              sm={10}
+            >
+              <Wysiwyg
+                toolbarClassName="demo-toolbar"
+                wrapperClassName="demo-wrapper-auto"
+                editorClassName="demo-editor"
+                ref={(c) => { me.wysiwyg = c; }}
+                onChange={(c) => {
+                  me.wysiwyg.onEditorChange(c, 0);
+                  if (me.textArea) {
+                    me.textArea.setValue(draftToHtml(me.wysiwyg.state.editorContents[0]));
+                    me.html.setValue(draftToHtml(me.wysiwyg.state.editorContents[0]));
+                  }
+                }}
+                toolbarOnFocus
+              />
+            </Col>
+          </Row>
+          <Row>
+            <Col
+              sm={6}
+            >
+              <h1>HTML5 Textarea export</h1>
+              <TextArea
+                disabled
+                className="demo-content no-focus"
+                ref={(c) => { me.textArea = c; }}
+                value=""
+              />
+            </Col>
+            <Col
+              sm={6}
+            >
+              <h1>HTML5 Content</h1>
+              <Html
+                ref={(c) => { me.html = c; }}
+                value=""
+              />
+            </Col>
+          </Row>
+        </div>
+      </div>
+    );
+  })
   .add('Output generated in HTML', (self) => {
     const me = self;
     return (

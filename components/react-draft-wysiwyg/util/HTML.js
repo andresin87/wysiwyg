@@ -3,7 +3,7 @@
  */
 import React, { Component } from 'react';
 
-class TextArea extends Component {
+class Html extends Component {
   constructor() {
     super();
     this.setValue = this.setValue.bind(this);
@@ -15,29 +15,17 @@ class TextArea extends Component {
     // this.state.value = this.props.value ? this.props.value : '';
   }
   render() {
-    const { className, disabled } = this.props;
     const value = (this.state && this.state.value) ? this.state.value : '';
     return (
-      <textarea
-        style={{
-          minHeight: 200,
-          width: '100%',
-        }}
-        className={className}
-        disabled={disabled}
-        value={value}
-      >
-        {value}
-      </textarea>
+      <div
+        dangerouslySetInnerHTML={{ __html: value }}
+      />
     );
   }
 }
 
-TextArea.propTypes = {
-  className: React.PropTypes.string,
-  disabled: React.PropTypes.bool,
+Html.propTypes = {
   value: React.PropTypes.string,
-  onChange: React.PropTypes.func,
 };
 
-export { TextArea };
+export { Html };
