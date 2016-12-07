@@ -81,21 +81,8 @@ storiesOf('Wysiwyg', module)
         <div className="demo-editorSection">
           <Row>
             <Col
-              sm={2}
+              sm={12}
             >
-              <a href="https://gitcdn.xyz/repo/andresin87/wysiwyg/master/components/react-draft-wysiwyg/util/LoremIpsum.docx">
-                <span className="fa-stack fa-5x">
-                  <i className="fa fa-square-o fa-stack-2x" />
-                  <i className="fa fa-file-word-o fa-stack-1x" />
-                </span>
-              </a>
-            </Col>
-            <Col
-              sm={10}
-            >
-              <h1>
-                RTLCoreStyles Config Options.
-              </h1>
               <Wysiwyg
                 toolbarClassName="demo-toolbar"
                 wrapperClassName="demo-wrapper-auto"
