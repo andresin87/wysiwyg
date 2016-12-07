@@ -9,16 +9,30 @@ import { Wysiwyg } from '../';
 import draftToHtml from 'draftjs-to-html';
 import draftToMarkdown from 'draftjs-to-markdown';
 
+import { convertToRaw, ContentState, convertFromHTML } from 'draft-js';
+
 import { TextArea } from './util/TextArea';
+import { ImportBlock } from './util/ImportBlock';
 
 import uploadImageCallBack from './util/uploadImageCallBack';
 import sampleEditorContent from './util/sampleEditorContent';
 import { initialContentState } from './util/sampleEditorContentLink';
 import { sampleMentionsArray } from './util/sampleMentionsContent';
-import { sampleToolbar, sampleToolbar2 } from './util/sampleToolbar';
-
+import { sampleToolbar, sampleToolbar2, sampleToolbar3 } from './util/sampleToolbar';
 
 storiesOf('Wysiwyg', module)
+  .add('Import HTML', () => (
+    <div className="container">
+      <h1>
+        Import HTML.
+      </h1>
+      <div className="demo-editorSection">
+        <ImportBlock
+          value="<h1>imported block</h1>"
+        />
+      </div>
+    </div>
+  ))
   .add('Output generated in HTML', (self) => {
     const me = self;
     return (
@@ -329,26 +343,79 @@ storiesOf('Wysiwyg', module)
   })
   .add('Editor toolbar with custom icons and styling.', () => (
     <div className="container">
-      <Wysiwyg
-        toolbarClassName="demo-toolbar-custom"
-        wrapperClassName="demo-wrapper-wide"
-        editorClassName="demo-editor-custom"
-        toolbar={sampleToolbar}
-      />
-      <i className="uz-icons-android" />
+      <h1>
+        Editor toolbar with custom icons and styling.
+      </h1>
+      <div className="demo-editorSection">
+        <Col sm={12}>
+          <Wysiwyg
+            toolbarClassName="demo-toolbar-custom"
+            wrapperClassName="demo-wrapper-auto"
+            editorClassName="demo-editor-custom"
+            toolbar={sampleToolbar}
+          />
+        </Col>
+      </div>
     </div>
   ))
-.add('Editor toolbar with custom font icons and styling.', () => (
-  <div className="container">
-    <Wysiwyg
-      toolbarClassName="demo-toolbar-custom"
-      wrapperClassName="demo-wrapper-wide"
-      editorClassName="demo-editor-custom"
-      toolbar={sampleToolbar2}
-    />
-    <i className="uz-icons-android" />
-  </div>
-))
+  .add('Editor toolbar with custom font icons and styling.', () => (
+    <div className="container">
+      <h1>
+        Editor toolbar with custom font icons and styling.
+      </h1>
+      <div className="demo-editorSection">
+        <Col sm={12}>
+          <Wysiwyg
+            toolbarClassName="demo-toolbar"
+            wrapperClassName="demo-wrapper-auto"
+            editorClassName="demo-editor"
+            toolbar={sampleToolbar2}
+          />
+        </Col>
+      </div>
+    </div>
+  ))
+  .add('Editor toolbar with font-awesome font icons and styling.', () => (
+    <div className="container">
+      <h1>
+        Editor toolbar with font-awesome font icons and styling.
+      </h1>
+      <div className="demo-editorSection">
+        <Col sm={12}>
+          <Wysiwyg
+            toolbarClassName="demo-toolbar"
+            wrapperClassName="demo-wrapper-auto compare"
+            editorClassName="demo-editor"
+            toolbar={sampleToolbar3}
+          />
+          <Wysiwyg
+            toolbarClassName="demo-toolbar"
+            wrapperClassName="demo-wrapper-auto compare"
+            editorClassName="demo-editor"
+          />
+        </Col>
+      </div>
+    </div>
+  ))
+  .add('Read only', () => (
+    <div className="container">
+      <h1>
+        Editor in Read-only Mode.
+      </h1>
+      <div className="demo-editorSection">
+        <Col sm={12}>
+          <Wysiwyg
+            toolbarClassName="demo-toolbar"
+            wrapperClassName="demo-wrapper-auto"
+            editorClassName="demo-editor"
+            toolbar={sampleToolbar3}
+            initialContentState={convertToRaw(ContentState.createFromBlockArray(convertFromHTML('<h1>hola mundo</h1>')))}
+            readOnly
+          />
+        </Col>
+      </div>
+    </div>
+  ))
   .add('container', () => (
     <div className="container">
 

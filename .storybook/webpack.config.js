@@ -55,7 +55,6 @@ var config = {
       {
         test: /\.(jpe|jpg|woff|woff2|eot|ttf|svg)(\?.*$|$)/,
         loader: 'url-loader?importLoaders=1&limit=100000',
-        exclude: /node_modules/
       },
       {
         test: /\.(svg)$/,

@@ -238,8 +238,8 @@ $color_french_gray_approx: #bdc1c9;
   top: 35px;
   left: 5px;
   flex-direction: column;
-  width: 175px;
-  height: 175px;
+  // width: 175px;
+  // height: 175px;
   border: 1px solid $seashell;
   padding: 15px;
   //Instead of the line below you could use @include border-radius($radius, $vertical-radius)

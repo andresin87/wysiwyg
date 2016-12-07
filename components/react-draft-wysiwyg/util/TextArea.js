@@ -26,7 +26,9 @@ class TextArea extends Component {
         className={className}
         disabled={disabled}
         value={value}
-      />
+      >
+        {value}
+      </textarea>
     );
   }
 }
@@ -35,6 +37,7 @@ TextArea.propTypes = {
   className: React.PropTypes.string,
   disabled: React.PropTypes.bool,
   value: React.PropTypes.string,
+  onChange: React.PropTypes.func,
 };
 
 export { TextArea };
