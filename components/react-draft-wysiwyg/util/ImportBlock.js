@@ -26,7 +26,7 @@ class ImportBlock extends Component {
     return (
       <div>
         <Col xs={4}>
-          <p>{'<h5>hola mundo</h5>'}</p>
+          <p>{this.props.value}</p>
           <TextArea
             ref={(c) => {
               this.textarea = c;

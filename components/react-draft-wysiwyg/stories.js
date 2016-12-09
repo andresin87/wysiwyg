@@ -23,15 +23,73 @@ import { sampleMentionsArray } from './util/sampleMentionsContent';
 import { sampleToolbar, sampleToolbar2, sampleToolbar3 } from './util/sampleToolbar';
 
 storiesOf('Wysiwyg', module)
-  .add('Import HTML', () => (
+  .add('Inline Wysiwyg', () => (
     <div className="container">
       <h1>
-        Import HTML.
+        Inline Wysiwyg.
       </h1>
       <div className="demo-editorSection">
-        <ImportBlock
-          value="<h1>imported block</h1>"
-        />
+        <Col sm={12}>
+          <Wysiwyg
+            toolbarClassName="demo-toolbar-absolute"
+            wrapperClassName="demo-wrapper-relative"
+            editorClassName="demo-editor-plain"
+            initialContentState={sampleEditorContent}
+            toolbarOnFocus
+            toolbar={{
+              options: ['inline', 'blockType', 'fontSize', 'fontFamily'],
+              inline: {
+                options: ['bold', 'italic', 'underline', 'strikethrough', 'monospace'],
+                bold: { className: 'bordered-option-classname' },
+                italic: { className: 'bordered-option-classname' },
+                underline: { className: 'bordered-option-classname' },
+                strikethrough: { className: 'bordered-option-classname' },
+                code: { className: 'bordered-option-classname' },
+              },
+              blockType: {
+                className: 'bordered-option-classname',
+              },
+              fontSize: {
+                className: 'bordered-option-classname',
+              },
+              fontFamily: {
+                className: 'bordered-option-classname',
+              },
+            }}
+          />
+        </Col>
+      </div>
+    </div>
+  ))
+  .add('Read only', () => (
+    <div className="container">
+      <h1>
+        Editor in Read-only Mode.
+      </h1>
+      <div className="demo-editorSection">
+        <Col sm={12}>
+          <h4>Visible</h4>
+          <Wysiwyg
+            toolbarClassName="demo-toolbar"
+            wrapperClassName="demo-wrapper-auto"
+            editorClassName="demo-editor"
+            toolbar={sampleToolbar3}
+            initialContentState={convertToRaw(ContentState.createFromBlockArray(convertFromHTML('<h1>hola mundo</h1>')))}
+            readOnly
+          />
+        </Col>
+        <Col sm={12}>
+          <h4>Inline</h4>
+          <Wysiwyg
+            toolbarClassName="demo-toolbar"
+            wrapperClassName="demo-wrapper-auto"
+            editorClassName="demo-editor"
+            toolbar={sampleToolbar3}
+            initialContentState={convertToRaw(ContentState.createFromBlockArray(convertFromHTML('<h1>hola mundo</h1>')))}
+            readOnly
+            toolbarOnFocus
+          />
+        </Col>
       </div>
     </div>
   ))
@@ -59,7 +117,227 @@ storiesOf('Wysiwyg', module)
       </div>
     </div>
   ))
-  .add('RTLCoreStyles', (self) => {
+  .add('Options grouped in drop-down', () => (
+    <div className="container">
+      <h1>
+        Options grouped in drop-down.
+      </h1>
+      <div className="demo-editorSection">
+        <Col sm={12}>
+          <Wysiwyg
+            toolbarClassName="demo-toolbar"
+            wrapperClassName="demo-wrapper-wide"
+            editorClassName="demo-editor"
+            uploadCallback={uploadImageCallBack}
+            toolbar={{
+              inline: { inDropdown: true },
+              list: { inDropdown: true },
+              textAlign: { inDropdown: true },
+              link: { inDropdown: true },
+              history: { inDropdown: true },
+            }}
+          />
+        </Col>
+      </div>
+    </div>
+  ))
+  .add('Editor with only a sub-set of options available', () => (
+    <div className="container">
+      <h1>
+        Editor with only a sub-set of options available.
+      </h1>
+      <div className="demo-editorSection">
+        <Col sm={12}>
+          <Wysiwyg
+            toolbarClassName="demo-toolbar"
+            wrapperClassName="demo-wrapper-medium"
+            editorClassName="demo-editor"
+            toolbar={{
+              options: ['inline', 'blockType', 'fontSize', 'fontFamily', 'remove', 'history'],
+              inline: {
+                options: ['bold', 'italic', 'underline', 'strikethrough'],
+              },
+            }}
+          />
+        </Col>
+      </div>
+    </div>
+  ))
+  .add('Editor with embedded links.', () => (
+    <div className="container">
+      <h1>
+        Editor with embedded links.
+      </h1>
+      <div className="demo-editorSection">
+        <Col sm={12}>
+          <Wysiwyg
+            toolbarClassName="demo-toolbar-absolute-high"
+            wrapperClassName="demo-wrapper-relative-long"
+            editorClassName="demo-editor-embedded"
+            initialContentState={initialContentState}
+            toolbarOnFocus
+            toolbar={{
+              inline: { inDropdown: true },
+              list: { inDropdown: true },
+              textAlign: { inDropdown: true },
+              link: { inDropdown: true },
+              history: { inDropdown: true },
+            }}
+          />
+        </Col>
+      </div>
+    </div>
+  ))
+  .add('Editor with mentions.', () => {
+    const suggestions = sampleMentionsArray.map((e) => {
+      const val = `${e.name.first}${(e.name.last.replace(/\s/g, '').charAt(0).toUpperCase() + e.name.last.replace(/\s/g, '').slice(1))}`;
+      return ({
+        text: val,
+        value: val,
+        url: `http://www.twitter.com/${val}`,
+      });
+    });
+    return (
+      <div className="container">
+        <h1>
+          Editor with mentions.
+        </h1>
+        <div className="demo-editorSection">
+          <Col sm={12}>
+            <Wysiwyg
+              style={{
+                height: '100%',
+              }}
+              toolbarClassName="demo-toolbar"
+              wrapperClassName="demo-wrapper-auto mentions"
+              editorClassName="demo-editor"
+              mention={{
+                separator: ' ',
+                trigger: '@',
+                suggestions,
+              }}
+            />
+          </Col>
+        </div>
+      </div>
+    );
+  })
+  .add('Editor toolbar with custom icons and styling.', () => (
+    <div className="container">
+      <h1>
+        Editor toolbar with custom icons and styling.
+      </h1>
+      <div className="demo-editorSection">
+        <Col sm={12}>
+          <Wysiwyg
+            toolbarClassName="demo-toolbar-custom"
+            wrapperClassName="demo-wrapper-auto"
+            editorClassName="demo-editor-custom"
+            toolbar={sampleToolbar}
+          />
+        </Col>
+      </div>
+    </div>
+  ))
+  .add('Editor toolbar with custom font icons and styling.', () => (
+    <div className="container">
+      <h1>
+        Editor toolbar with custom font icons and styling.
+      </h1>
+      <div className="demo-editorSection">
+        <Col sm={12}>
+          <Wysiwyg
+            toolbarClassName="demo-toolbar"
+            wrapperClassName="demo-wrapper-auto"
+            editorClassName="demo-editor"
+            toolbar={sampleToolbar2}
+          />
+        </Col>
+      </div>
+    </div>
+  ))
+  .add('Editor toolbar with font-awesome font icons and styling.', () => (
+    <div className="container">
+      <h1>
+        Editor toolbar with font-awesome font icons and styling.
+      </h1>
+      <div className="demo-editorSection">
+        <Col sm={12}>
+          <Wysiwyg
+            toolbarClassName="demo-toolbar"
+            wrapperClassName="demo-wrapper-auto compare"
+            editorClassName="demo-editor"
+            toolbar={sampleToolbar3}
+          />
+          <Wysiwyg
+            toolbarClassName="demo-toolbar"
+            wrapperClassName="demo-wrapper-auto compare"
+            editorClassName="demo-editor"
+          />
+        </Col>
+      </div>
+    </div>
+  ))
+  .add('Import HTML', () => (
+    <div className="container">
+      <h1>
+        Import HTML.
+      </h1>
+      <div className="demo-editorSection">
+        <ImportBlock
+          value="<h6>imported block</h6>"
+        />
+      </div>
+    </div>
+  ))
+  .add('RTL', () => (
+    <div className="container">
+      <h1>
+        RTL.
+      </h1>
+      <div className="demo-editorSection">
+        <ImportBlock
+          value="<h6>مرحبا</h6><h6>كيف حالك؟</h6>"
+        />
+      </div>
+    </div>
+  ))
+  .add('Output generated in HTML', (self) => {
+    const me = self;
+    return (
+      <div className="container">
+        <h1>
+          Editor with output generated in HTML.
+        </h1>
+        <div className="demo-editorSection">
+          <Col xs={8}>
+            <Wysiwyg
+              toolbarClassName="demo-toolbar"
+              wrapperClassName="demo-wrapper-auto"
+              editorClassName="demo-editor"
+              ref={(c) => { me.wysiwyg = c; }}
+              onChange={(c) => {
+                me.wysiwyg.onEditorChange(c, 0);
+                if (me.textArea) {
+                  me.textArea.setValue(draftToHtml(me.wysiwyg.state.editorContents[0]));
+                }
+              }}
+              uploadCallback={uploadImageCallBack}
+            />
+          </Col>
+          <Col xs={4}>
+            <TextArea
+              disabled
+              className="demo-content no-focus"
+              ref={(c) => { me.textArea = c; }}
+              value=""
+            />
+          </Col>
+        </div>
+      </div>
+    );
+  })
+  .add('Output generated in HTML CoreStyles', (self) => {
     const me = self;
     const options = {
       inlineStyles: {
@@ -76,7 +354,7 @@ storiesOf('Wysiwyg', module)
     return (
       <div className="container">
         <h1>
-          RTLCoreStyles.
+          Output generated in HTML CoreStyles.
         </h1>
         <div className="demo-editorSection">
           <Row>
@@ -131,7 +409,7 @@ storiesOf('Wysiwyg', module)
             <Col
               sm={6}
             >
-              <h4>HTML5 RTLCoreStyles export</h4>
+              <h4>HTML5 CoreStyles export</h4>
               <TextArea
                 disabled
                 className="demo-content no-focus"
@@ -153,7 +431,7 @@ storiesOf('Wysiwyg', module)
             <Col
               sm={6}
             >
-              <h4>HTML5 RTL Content</h4>
+              <h4>HTML5 CoreStyles Content</h4>
               <Html
                 ref={(c) => { me.html2 = c; }}
                 value=""
@@ -228,40 +506,6 @@ storiesOf('Wysiwyg', module)
       </div>
     );
   })
-  .add('Output generated in HTML', (self) => {
-    const me = self;
-    return (
-      <div className="container">
-        <h1>
-          Editor with output generated in HTML.
-        </h1>
-        <div className="demo-editorSection">
-          <Col xs={8}>
-            <Wysiwyg
-              toolbarClassName="demo-toolbar"
-              wrapperClassName="demo-wrapper-auto"
-              editorClassName="demo-editor"
-              ref={(c) => { me.wysiwyg = c; }}
-              onChange={(c) => {
-                me.wysiwyg.onEditorChange(c, 0);
-                if (me.textArea) {
-                  me.textArea.setValue(draftToHtml(me.wysiwyg.state.editorContents[0]));
-                }
-              }}
-              uploadCallback={uploadImageCallBack}
-            />
-          </Col>
-          <Col xs={4}>
-            <TextArea
-              disabled
-              className="demo-content no-focus"
-              ref={(c) => { me.textArea = c; }}
-              value=""
-            />
-          </Col>
-        </div>
-      </div>
-    ); })
   .add('Output generated in MarkDown', (self) => {
     const me = self;
     return (
@@ -392,227 +636,5 @@ storiesOf('Wysiwyg', module)
           </Row>
         </div>
       </div>
-    ); })
-  .add('Options grouped in drop-down', () => (
-    <div className="container">
-      <h1>
-        Options grouped in drop-down.
-      </h1>
-      <div className="demo-editorSection">
-        <Col sm={12}>
-          <Wysiwyg
-            toolbarClassName="demo-toolbar"
-            wrapperClassName="demo-wrapper-wide"
-            editorClassName="demo-editor"
-            uploadCallback={uploadImageCallBack}
-            toolbar={{
-              inline: { inDropdown: true },
-              list: { inDropdown: true },
-              textAlign: { inDropdown: true },
-              link: { inDropdown: true },
-              history: { inDropdown: true },
-            }}
-          />
-        </Col>
-      </div>
-    </div>
-  ))
-  .add('Editor with only a sub-set of options available', () => (
-    <div className="container">
-      <h1>
-        Editor with only a sub-set of options available.
-      </h1>
-      <div className="demo-editorSection">
-        <Col sm={12}>
-          <Wysiwyg
-            toolbarClassName="demo-toolbar"
-            wrapperClassName="demo-wrapper-medium"
-            editorClassName="demo-editor"
-            toolbar={{
-              options: ['inline', 'blockType', 'fontSize', 'fontFamily', 'remove', 'history'],
-              inline: {
-                options: ['bold', 'italic', 'underline', 'strikethrough'],
-              },
-            }}
-          />
-        </Col>
-      </div>
-    </div>
-  ))
-  .add('Inline Wysiwyg', () => (
-    <div className="container">
-      <h1>
-        Inline Wysiwyg.
-      </h1>
-      <div className="demo-editorSection">
-        <Col sm={12}>
-          <Wysiwyg
-            toolbarClassName="demo-toolbar-absolute"
-            wrapperClassName="demo-wrapper-relative"
-            editorClassName="demo-editor-plain"
-            initialContentState={sampleEditorContent}
-            toolbarOnFocus
-            toolbar={{
-              options: ['inline', 'blockType', 'fontSize', 'fontFamily'],
-              inline: {
-                options: ['bold', 'italic', 'underline', 'strikethrough', 'monospace'],
-                bold: { className: 'bordered-option-classname' },
-                italic: { className: 'bordered-option-classname' },
-                underline: { className: 'bordered-option-classname' },
-                strikethrough: { className: 'bordered-option-classname' },
-                code: { className: 'bordered-option-classname' },
-              },
-              blockType: {
-                className: 'bordered-option-classname',
-              },
-              fontSize: {
-                className: 'bordered-option-classname',
-              },
-              fontFamily: {
-                className: 'bordered-option-classname',
-              },
-            }}
-          />
-        </Col>
-      </div>
-    </div>
-  ))
-  .add('Editor with embedded links.', () => (
-    <div className="container">
-      <h1>
-        Editor with embedded links.
-      </h1>
-      <div className="demo-editorSection">
-        <Col sm={12}>
-          <Wysiwyg
-            toolbarClassName="demo-toolbar-absolute-high"
-            wrapperClassName="demo-wrapper-relative-long"
-            editorClassName="demo-editor-embedded"
-            initialContentState={initialContentState}
-            toolbarOnFocus
-            toolbar={{
-              inline: { inDropdown: true },
-              list: { inDropdown: true },
-              textAlign: { inDropdown: true },
-              link: { inDropdown: true },
-              history: { inDropdown: true },
-            }}
-          />
-        </Col>
-      </div>
-    </div>
-  ))
-  .add('Editor with mentions.', () => {
-    const suggestions = sampleMentionsArray.map((e) => {
-      const val = `${e.name.first}${(e.name.last.replace(/\s/g, '').charAt(0).toUpperCase() + e.name.last.replace(/\s/g, '').slice(1))}`;
-      return ({
-        text: val,
-        value: val,
-        url: `http://www.twitter.com/${val}`,
-      });
-    });
-    return (
-      <div className="container">
-        <h1>
-          Editor with mentions.
-        </h1>
-        <div className="demo-editorSection">
-          <Col sm={12}>
-            <Wysiwyg
-              style={{
-                height: '100%',
-              }}
-              toolbarClassName="demo-toolbar"
-              wrapperClassName="demo-wrapper-auto mentions"
-              editorClassName="demo-editor"
-              mention={{
-                separator: ' ',
-                trigger: '@',
-                suggestions,
-              }}
-            />
-          </Col>
-        </div>
-      </div>
     );
-  })
-  .add('Editor toolbar with custom icons and styling.', () => (
-    <div className="container">
-      <h1>
-        Editor toolbar with custom icons and styling.
-      </h1>
-      <div className="demo-editorSection">
-        <Col sm={12}>
-          <Wysiwyg
-            toolbarClassName="demo-toolbar-custom"
-            wrapperClassName="demo-wrapper-auto"
-            editorClassName="demo-editor-custom"
-            toolbar={sampleToolbar}
-          />
-        </Col>
-      </div>
-    </div>
-  ))
-  .add('Editor toolbar with custom font icons and styling.', () => (
-    <div className="container">
-      <h1>
-        Editor toolbar with custom font icons and styling.
-      </h1>
-      <div className="demo-editorSection">
-        <Col sm={12}>
-          <Wysiwyg
-            toolbarClassName="demo-toolbar"
-            wrapperClassName="demo-wrapper-auto"
-            editorClassName="demo-editor"
-            toolbar={sampleToolbar2}
-          />
-        </Col>
-      </div>
-    </div>
-  ))
-  .add('Editor toolbar with font-awesome font icons and styling.', () => (
-    <div className="container">
-      <h1>
-        Editor toolbar with font-awesome font icons and styling.
-      </h1>
-      <div className="demo-editorSection">
-        <Col sm={12}>
-          <Wysiwyg
-            toolbarClassName="demo-toolbar"
-            wrapperClassName="demo-wrapper-auto compare"
-            editorClassName="demo-editor"
-            toolbar={sampleToolbar3}
-          />
-          <Wysiwyg
-            toolbarClassName="demo-toolbar"
-            wrapperClassName="demo-wrapper-auto compare"
-            editorClassName="demo-editor"
-          />
-        </Col>
-      </div>
-    </div>
-  ))
-  .add('Read only', () => (
-    <div className="container">
-      <h1>
-        Editor in Read-only Mode.
-      </h1>
-      <div className="demo-editorSection">
-        <Col sm={12}>
-          <Wysiwyg
-            toolbarClassName="demo-toolbar"
-            wrapperClassName="demo-wrapper-auto"
-            editorClassName="demo-editor"
-            toolbar={sampleToolbar3}
-            initialContentState={convertToRaw(ContentState.createFromBlockArray(convertFromHTML('<h1>hola mundo</h1>')))}
-            readOnly
-          />
-        </Col>
-      </div>
-    </div>
-  ))
-  .add('container', () => (
-    <div className="container">
-
-    </div>
-  ));
+  });
