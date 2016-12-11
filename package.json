@@ -60,13 +60,16 @@
   "homepage": "https://github.com/andresin87/wysiwyg#readme",
   "dependencies": {
     "bootstrap-sass": "3.3.7",
+    "classnames": "^2.2.5",
     "draft-js": "^0.9.1",
-    "draft-js-export-html": "0.5.2",
+    "draft-js-export-html": "0.5.0",
     "draft-js-import-html": "0.3.2",
     "draft-js-plugins-editor": "^2.0.0-beta1",
     "draftjs-to-html": "^0.3.9",
     "draftjs-to-markdown": "0.0.4",
+    "draftjs-utils": "^0.3.2",
     "font-awesome": "4.7.0",
+    "immutable": "^3.8.1",
     "react-draft-wysiwyg": "^1.2.1"
   }
 }

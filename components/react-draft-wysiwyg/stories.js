@@ -15,6 +15,7 @@ import { convertToRaw, ContentState, convertFromHTML } from 'draft-js';
 import { TextArea } from './util/TextArea';
 import { Html } from './util/Html';
 import { ImportBlock } from './util/ImportBlock';
+import { WysiwygEditor } from './util/WysiwygEditor';
 
 import uploadImageCallBack from './util/uploadImageCallBack';
 import sampleEditorContent from './util/sampleEditorContent';
@@ -592,21 +593,14 @@ storiesOf('Wysiwyg', module)
       </div>
     </div>
   ))
-  .add('Read only', () => (
+  .add('WysiwygEditor', () => (
     <div className="container">
       <h1>
-        Editor in Read-only Mode.
+        WysiwygEditor.
       </h1>
       <div className="demo-editorSection">
         <Col sm={12}>
-          <Wysiwyg
-            toolbarClassName="demo-toolbar"
-            wrapperClassName="demo-wrapper-auto"
-            editorClassName="demo-editor"
-            toolbar={sampleToolbar3}
-            initialContentState={convertToRaw(ContentState.createFromBlockArray(convertFromHTML('<h1>hola mundo</h1>')))}
-            readOnly
-          />
+          <WysiwygEditor />
         </Col>
       </div>
     </div>
