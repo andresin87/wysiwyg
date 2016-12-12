@@ -5,7 +5,7 @@ import React, { Component } from 'react';
 import { Col } from 'react-bootstrap';
 import { convertToRaw, ContentState, convertFromHTML } from 'draft-js';
 
-import { Wysiwyg } from '../';
+import { ReactDraftWysiwyg } from '../';
 import { TextArea } from './TextArea';
 
 
@@ -38,7 +38,7 @@ class ImportBlock extends Component {
           />
         </Col>
         <Col xs={8}>
-          <Wysiwyg
+          <ReactDraftWysiwyg
             toolbarClassName="demo-toolbar"
             wrapperClassName="demo-wrapper-auto"
             editorClassName="demo-editor"

@@ -5,7 +5,7 @@
 import React, { Component } from 'react';
 import { Editor } from 'react-draft-wysiwyg';
 
-class Wysiwyg extends Component {
+class ReactDraftWysiwyg extends Component {
   constructor() {
     super();
     this.state = { editorContents: [] };
@@ -30,7 +30,7 @@ class Wysiwyg extends Component {
   }
 }
 
-Wysiwyg.propTypes = {
+ReactDraftWysiwyg.propTypes = {
   onChange: React.PropTypes.func,
 };
 
@@ -40,4 +40,4 @@ Wysiwyg.propTypes = {
 //   },
 // };
 
-export { Wysiwyg };
+export { ReactDraftWysiwyg };

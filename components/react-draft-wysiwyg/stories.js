@@ -4,7 +4,7 @@
 import React from 'react';
 import { storiesOf } from '@kadira/storybook';
 import { Row, Col } from 'react-bootstrap';
-import { Wysiwyg } from '../';
+import { ReactDraftWysiwyg } from '../';
 
 import draftToHtml from 'draftjs-to-html';
 import { stateToHTML } from 'draft-js-export-html';
@@ -22,7 +22,7 @@ import { initialContentState } from './util/sampleEditorContentLink';
 import { sampleMentionsArray } from './util/sampleMentionsContent';
 import { sampleToolbar, sampleToolbar2, sampleToolbar3 } from './util/sampleToolbar';
 
-storiesOf('Wysiwyg', module)
+storiesOf('ReactDraftWysiwyg', module)
   .add('Inline Wysiwyg', () => (
     <div className="container">
       <h1>
@@ -30,7 +30,7 @@ storiesOf('Wysiwyg', module)
       </h1>
       <div className="demo-editorSection">
         <Col sm={12}>
-          <Wysiwyg
+          <ReactDraftWysiwyg
             toolbarClassName="demo-toolbar-absolute"
             wrapperClassName="demo-wrapper-relative"
             editorClassName="demo-editor-plain"
@@ -69,7 +69,7 @@ storiesOf('Wysiwyg', module)
       <div className="demo-editorSection">
         <Col sm={12}>
           <h4>Visible</h4>
-          <Wysiwyg
+          <ReactDraftWysiwyg
             toolbarClassName="demo-toolbar"
             wrapperClassName="demo-wrapper-auto"
             editorClassName="demo-editor"
@@ -80,7 +80,7 @@ storiesOf('Wysiwyg', module)
         </Col>
         <Col sm={12}>
           <h4>Inline</h4>
-          <Wysiwyg
+          <ReactDraftWysiwyg
             toolbarClassName="demo-toolbar"
             wrapperClassName="demo-wrapper-auto"
             editorClassName="demo-editor"
@@ -100,7 +100,7 @@ storiesOf('Wysiwyg', module)
       </h1>
       <div className="demo-editorSection">
         <Col sm={12}>
-          <Wysiwyg
+          <ReactDraftWysiwyg
             toolbarClassName="demo-toolbar"
             wrapperClassName="demo-wrapper-wide"
             editorClassName="demo-editor"
@@ -124,7 +124,7 @@ storiesOf('Wysiwyg', module)
       </h1>
       <div className="demo-editorSection">
         <Col sm={12}>
-          <Wysiwyg
+          <ReactDraftWysiwyg
             toolbarClassName="demo-toolbar"
             wrapperClassName="demo-wrapper-wide"
             editorClassName="demo-editor"
@@ -148,7 +148,7 @@ storiesOf('Wysiwyg', module)
       </h1>
       <div className="demo-editorSection">
         <Col sm={12}>
-          <Wysiwyg
+          <ReactDraftWysiwyg
             toolbarClassName="demo-toolbar"
             wrapperClassName="demo-wrapper-medium"
             editorClassName="demo-editor"
@@ -170,7 +170,7 @@ storiesOf('Wysiwyg', module)
       </h1>
       <div className="demo-editorSection">
         <Col sm={12}>
-          <Wysiwyg
+          <ReactDraftWysiwyg
             toolbarClassName="demo-toolbar-absolute-high"
             wrapperClassName="demo-wrapper-relative-long"
             editorClassName="demo-editor-embedded"
@@ -204,7 +204,7 @@ storiesOf('Wysiwyg', module)
         </h1>
         <div className="demo-editorSection">
           <Col sm={12}>
-            <Wysiwyg
+            <ReactDraftWysiwyg
               style={{
                 height: '100%',
               }}
@@ -229,7 +229,7 @@ storiesOf('Wysiwyg', module)
       </h1>
       <div className="demo-editorSection">
         <Col sm={12}>
-          <Wysiwyg
+          <ReactDraftWysiwyg
             toolbarClassName="demo-toolbar-custom"
             wrapperClassName="demo-wrapper-auto"
             editorClassName="demo-editor-custom"
@@ -246,7 +246,7 @@ storiesOf('Wysiwyg', module)
       </h1>
       <div className="demo-editorSection">
         <Col sm={12}>
-          <Wysiwyg
+          <ReactDraftWysiwyg
             toolbarClassName="demo-toolbar"
             wrapperClassName="demo-wrapper-auto"
             editorClassName="demo-editor"
@@ -263,13 +263,13 @@ storiesOf('Wysiwyg', module)
       </h1>
       <div className="demo-editorSection">
         <Col sm={12}>
-          <Wysiwyg
+          <ReactDraftWysiwyg
             toolbarClassName="demo-toolbar"
             wrapperClassName="demo-wrapper-auto compare"
             editorClassName="demo-editor"
             toolbar={sampleToolbar3}
           />
-          <Wysiwyg
+          <ReactDraftWysiwyg
             toolbarClassName="demo-toolbar"
             wrapperClassName="demo-wrapper-auto compare"
             editorClassName="demo-editor"
@@ -311,7 +311,7 @@ storiesOf('Wysiwyg', module)
         </h1>
         <div className="demo-editorSection">
           <Col xs={8}>
-            <Wysiwyg
+            <ReactDraftWysiwyg
               toolbarClassName="demo-toolbar"
               wrapperClassName="demo-wrapper-auto"
               editorClassName="demo-editor"
@@ -361,7 +361,7 @@ storiesOf('Wysiwyg', module)
             <Col
               sm={12}
             >
-              <Wysiwyg
+              <ReactDraftWysiwyg
                 toolbarClassName="demo-toolbar"
                 wrapperClassName="demo-wrapper-auto"
                 editorClassName="demo-editor"
@@ -464,7 +464,7 @@ storiesOf('Wysiwyg', module)
             <Col
               sm={10}
             >
-              <Wysiwyg
+              <ReactDraftWysiwyg
                 toolbarClassName="demo-toolbar"
                 wrapperClassName="demo-wrapper-auto"
                 editorClassName="demo-editor"
@@ -515,7 +515,7 @@ storiesOf('Wysiwyg', module)
         </h1>
         <div className="demo-editorSection">
           <Col xs={8}>
-            <Wysiwyg
+            <ReactDraftWysiwyg
               toolbarClassName="demo-toolbar"
               wrapperClassName="demo-wrapper-auto"
               editorClassName="demo-editor"
@@ -549,7 +549,7 @@ storiesOf('Wysiwyg', module)
         </h1>
         <div className="demo-editorSection">
           <Col xs={8}>
-            <Wysiwyg
+            <ReactDraftWysiwyg
               toolbarClassName="demo-toolbar"
               wrapperClassName="demo-wrapper-auto"
               editorClassName="demo-editor"
@@ -584,7 +584,7 @@ storiesOf('Wysiwyg', module)
         <div className="demo-editorSection">
           <Row>
             <Col xs={12}>
-              <Wysiwyg
+              <ReactDraftWysiwyg
                 toolbarClassName="demo-toolbar"
                 wrapperClassName="demo-wrapper-auto"
                 editorClassName="demo-editor"

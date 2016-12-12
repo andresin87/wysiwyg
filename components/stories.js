@@ -5,4 +5,5 @@
 // # styles
 require('./stories.scss');
 
+import './draft-js-plugins/stories';
 import './react-draft-wysiwyg/stories';
