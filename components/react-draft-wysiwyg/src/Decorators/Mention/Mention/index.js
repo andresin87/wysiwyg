@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import { Entity } from 'draft-js';
 import classNames from 'classnames';
-import styles from './styles.css'; // eslint-disable-line no-unused-vars
+// import styles from './styles.css'; // eslint-disable-line no-unused-vars
 
 let config = {
   mentionClassName: undefined,

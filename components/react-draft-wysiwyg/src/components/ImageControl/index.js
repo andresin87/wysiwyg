@@ -5,7 +5,7 @@ import { Entity, AtomicBlockUtils } from 'draft-js';
 import classNames from 'classnames';
 import Option from '../Option';
 import Spinner from '../Spinner';
-import styles from './styles.css'; // eslint-disable-line no-unused-vars
+// import styles from './styles.css'; // eslint-disable-line no-unused-vars
 
 export default class ImageControl extends Component {
 

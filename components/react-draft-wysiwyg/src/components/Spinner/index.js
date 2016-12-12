@@ -1,7 +1,7 @@
 /* @flow */
 
 import React from 'react';
-import styles from './styles.css'; // eslint-disable-line no-unused-vars
+// import styles from './styles.css'; // eslint-disable-line no-unused-vars
 
 export default () =>
   <div className="rdw-spinner">

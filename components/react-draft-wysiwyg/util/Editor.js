@@ -39,13 +39,14 @@ import EmbeddedControl from '../src/components/EmbeddedControl';
 import EmojiControl from '../src/components/EmojiControl';
 import ImageControl from '../src/components/ImageControl';
 import HistoryControl from '../src/components/HistoryControl';
+import ViewControl from '../components/ViewControl';
 
 import LinkDecorator from '../src/decorators/Link';
 import MentionDecorator from '../src/decorators/Mention';
 import BlockRendererFunc from '../src/renderer';
 import defaultToolbar from '../src/config/defaultToolbar';
-import './styles.css';
-import '../../../../css/Draft.css';
+// import './styles.css';
+// import '../../../../css/Draft.css';
 
 export default class WysiwygEditor extends Component {
 
@@ -356,6 +357,12 @@ export default class WysiwygEditor extends Component {
                 config={remove}
               />}
               {options.indexOf('history') >= 0 && <HistoryControl
+                modalHandler={this.modalHandler}
+                editorState={editorState}
+                onChange={this.onChange}
+                config={history}
+              />}
+              {options.indexOf('view') >= 0 && <ViewControl
                 modalHandler={this.modalHandler}
                 editorState={editorState}
                 onChange={this.onChange}

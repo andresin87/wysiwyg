@@ -2,7 +2,7 @@
 
 import React, { Component, PropTypes } from 'react';
 import classNames from 'classnames';
-import styles from './styles.css'; // eslint-disable-line no-unused-vars
+// import styles from './styles.css'; // eslint-disable-line no-unused-vars
 
 export default class Option extends Component {
 

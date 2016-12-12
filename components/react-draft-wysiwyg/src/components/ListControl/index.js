@@ -7,7 +7,7 @@ import classNames from 'classnames';
 import { getFirstIcon } from '../../utils/toolbar';
 import { Dropdown, DropdownOption } from '../Dropdown';
 import Option from '../Option';
-import styles from './styles.css'; // eslint-disable-line no-unused-vars
+// import styles from './styles.css'; // eslint-disable-line no-unused-vars
 
 export default class ListControl extends Component {
 

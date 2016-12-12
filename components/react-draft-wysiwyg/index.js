@@ -3,7 +3,8 @@
  */
 
 import React, { Component } from 'react';
-import { Editor } from 'react-draft-wysiwyg';
+// import { Editor } from 'react-draft-wysiwyg';
+import { Editor } from './util/Editor'
 
 class Wysiwyg extends Component {
   constructor() {

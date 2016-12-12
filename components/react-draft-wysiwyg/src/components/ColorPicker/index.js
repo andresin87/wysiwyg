@@ -8,7 +8,7 @@ import {
   getSelectionCustomInlineStyle,
 } from 'draftjs-utils';
 import Option from '../Option';
-import styles from './styles.css'; // eslint-disable-line no-unused-vars
+// import styles from './styles.css'; // eslint-disable-line no-unused-vars
 
 export default class ColorPicker extends Component {
 
