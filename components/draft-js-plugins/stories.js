@@ -13,7 +13,7 @@ storiesOf('DraftJsPluginsWysiwyg', module)
   .add('No Toolbar', () => (
     <div className="container">
       <h1>
-        Inline Toolbar plugin.
+        No Toolbar / NO plugin.
       </h1>
       <div className="demo-editorSection">
         <Col sm={12}>
@@ -25,7 +25,7 @@ storiesOf('DraftJsPluginsWysiwyg', module)
   .add('Inline Toolbar plugin', () => (
     <div className="container">
       <h1>
-        Inline Toolbar plugin.
+        Inline Toolbar / NO plugin.
       </h1>
       <div className="demo-editorSection">
         <Col sm={12}>
@@ -39,7 +39,7 @@ storiesOf('DraftJsPluginsWysiwyg', module)
   .add('Side Toolbar plugin', () => (
     <div className="container">
       <h1>
-        Side Toolbar plugin.
+        Side Toolbar /NO plugin.
       </h1>
       <div className="demo-editorSection">
         <Col sm={12}>
