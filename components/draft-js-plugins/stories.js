@@ -17,7 +17,6 @@ storiesOf('DraftJsPluginsWysiwyg', module)
       </h1>
       <div className="demo-editorSection">
         <Col sm={12}>
-          {'code here!'}
           <DraftJsPluginsWysiwyg />
         </Col>
       </div>
@@ -30,7 +29,6 @@ storiesOf('DraftJsPluginsWysiwyg', module)
       </h1>
       <div className="demo-editorSection">
         <Col sm={12}>
-          {'code here!'}
           <DraftJsPluginsWysiwyg
             toolbar="inline"
           />
@@ -41,11 +39,10 @@ storiesOf('DraftJsPluginsWysiwyg', module)
   .add('Side Toolbar plugin', () => (
     <div className="container">
       <h1>
-        Inline Toolbar plugin.
+        Side Toolbar plugin.
       </h1>
       <div className="demo-editorSection">
         <Col sm={12}>
-          {'code here!'}
           <DraftJsPluginsWysiwyg
             toolbar="side"
           />
