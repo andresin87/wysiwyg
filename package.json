@@ -69,6 +69,7 @@
     "draftjs-to-html": "^0.3.9",
     "draftjs-to-markdown": "0.0.4",
     "font-awesome": "4.7.0",
+    "lodash": "4.14.1",
     "react-draft-wysiwyg": "^1.2.1"
   }
 }
