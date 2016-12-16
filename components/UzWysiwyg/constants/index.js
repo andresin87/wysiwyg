@@ -19,11 +19,11 @@
  * @date    2016-12-15
  * @summary empty.
  */
-export default CONSTANTS = {
+export default {
   types: [
     'basic',
     'lite',
     'full',
   ],
   defaultType: 'basic',
-}
+};

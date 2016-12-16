@@ -25,21 +25,20 @@ import { Editor } from 'react-draft-wysiwyg';
 import { omit } from 'lodash';
 
 import { mergeRecursive } from './utils';
-import basicToolbar  from './toolbars/basic';
+import basicToolbar from './toolbars/basic';
 import CONSTANTS from './constants';
 
-class ReactDraftWysiwyg extends Component {
+class UzWysiwyg extends Component {
   constructor() {
     super();
     this.state = { editorContents: [] };
     this.onEditorChange = this.onEditorChange.bind(this);
   }
-  
-  ComponentWillMount() {
-    this.toolbarType  = this.props.type ? this.props.type : CONSTANTS.defaultType;
+  componentWillMount() {
+    this.toolbarType = this.props.type ? this.props.type : CONSTANTS.defaultType;
     switch (this.toolbarType) {
       case CONSTANTS.types[0]:  // basic
-        this.toolbar = basicToolbar;
+        this.toolbar = mergeRecursive(basicToolbar, this.toolbar);
         break;
       case CONSTANTS.types[1]:  // lite
         break;
@@ -49,7 +48,6 @@ class ReactDraftWysiwyg extends Component {
         break;
     }
   }
-  
   onEditorChange(editorContent, index) {
     let editorContents = this.state.editorContents;
     editorContents[index] = editorContent;
@@ -58,27 +56,28 @@ class ReactDraftWysiwyg extends Component {
       editorContents,
     });
   }
-  
   render() {
-    const toolbar =
+    console.log('render');
+    const props = omit(this.props, ['toolbar', 'inline']);
     return (
       <Editor
-        toolbar:
-        {...this.props}
+        toolbar={this.toolbar}
+        toolbarOnFocus={this.props.inline}
+        {...props}
       />
     );
   }
 }
 
-ReactDraftWysiwyg.propTypes = {
+UzWysiwyg.propTypes = {
   onChange: React.PropTypes.func,
-  type: React.PropTypes.oneOf(CONSTANTS.types)
+  type: React.PropTypes.oneOf(CONSTANTS.types),
 };
 
-// Wysiwyg.defaultProps = {
+// UzWysiwyg.defaultProps = {
 //   onChange: () => {
 //     console.log('onChange');
 //   },
 // };
 
-export { ReactDraftWysiwyg };
+export { UzWysiwyg };

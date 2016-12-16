@@ -13,19 +13,9 @@
  *
  * @company UserZoom Technologies SL
  * @project uz-wysiwig
- * @file    basic
+ * @file    full
  * @author  UserZoom R&D
  * @email   rd@userzoom.com
- * @date    2016-12-15
+ * @date    2016-12-16
  * @summary empty.
  */
-import { bold, italic, underline } from '../icons';
-
-export default {
-  options: ['inline'],
-  inline: {
-    bold: { icon: bold, className: 'demo-option-custom' },
-    italic: { icon: italic, className: 'demo-option-custom' },
-    underline: { icon: underline, className: 'demo-option-custom' },
-  },
-};

@@ -19,3 +19,27 @@
  * @date    2016-12-14
  * @summary empty.
  */
+import React from 'react';
+import { storiesOf } from '@kadira/storybook';
+import { Col } from 'react-bootstrap';
+
+import { UzWysiwyg } from '../';
+
+storiesOf('UzWysiwyg', module)
+  .add('Basic', () => (
+    <div className="container">
+      <h1>
+        Inline Wysiwyg.
+      </h1>
+      <div className="demo-editorSection">
+        <Col sm={12}>
+          <UzWysiwyg
+            toolbarClassName="demo-toolbar-absolute"
+            wrapperClassName="demo-wrapper-relative"
+            editorClassName="demo-editor-plain"
+            type="basic"
+          />
+        </Col>
+      </div>
+    </div>
+  ));
