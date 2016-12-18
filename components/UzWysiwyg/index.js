@@ -57,12 +57,12 @@ class UzWysiwyg extends Component {
     });
   }
   render() {
-    console.log('render');
-    const props = omit(this.props, ['toolbar', 'inline']);
+    const props = omit(this.props, ['toolbar', 'inline', 'readOnly']);
     return (
       <Editor
         toolbar={this.toolbar}
         toolbarOnFocus={this.props.inline}
+        readOnly={this.props.readOnly}
         {...props}
       />
     );
