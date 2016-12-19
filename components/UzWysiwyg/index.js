@@ -26,6 +26,7 @@ import { omit } from 'lodash';
 
 import { mergeRecursive } from './utils';
 import basicToolbar from './toolbars/basic';
+import liteToolbar from './toolbars/lite';
 import CONSTANTS from './constants';
 
 class UzWysiwyg extends Component {
@@ -41,6 +42,7 @@ class UzWysiwyg extends Component {
         this.toolbar = mergeRecursive(basicToolbar, this.toolbar);
         break;
       case CONSTANTS.types[1]:  // lite
+        this.toolbar = mergeRecursive(liteToolbar, this.toolbar);
         break;
       case CONSTANTS.types[2]:  // full
         break;
@@ -72,6 +74,8 @@ class UzWysiwyg extends Component {
 UzWysiwyg.propTypes = {
   onChange: React.PropTypes.func,
   type: React.PropTypes.oneOf(CONSTANTS.types),
+  inline: React.PropTypes.bool,
+  readOnly: React.PropTypes.bool,
 };
 
 // UzWysiwyg.defaultProps = {

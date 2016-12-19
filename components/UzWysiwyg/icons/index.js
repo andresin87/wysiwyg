@@ -20,36 +20,36 @@
  * @summary empty.
  */
 
-export const bold = { icon: null, className: '' };
-export const italic = { icon: null, className: '' };
-export const underline = { icon: null, className: '' };
-export const strikethrough = { icon: null, className: '' };
-export const monospace = { icon: null, className: '' };
-export const superscript = { icon: null, className: '' };
-export const subscript = { icon: null, className: '' };
+export const bold = { icon: null, className: undefined };
+export const italic = { icon: null, className: undefined };
+export const underline = { icon: null, className: undefined };
+export const strikethrough = { icon: null, className: undefined };
+export const monospace = { icon: null, className: undefined };
+export const superscript = { icon: null, className: undefined };
+export const subscript = { icon: null, className: undefined };
 
-export const unordered = { icon: null, className: '' };
-export const ordered = { icon: null, className: '' };
-export const indent = { icon: null, className: '' };
-export const outdent = { icon: null, className: '' };
+export const unordered = { icon: null, className: undefined };
+export const ordered = { icon: null, className: undefined };
+export const indent = { icon: null, className: undefined };
+export const outdent = { icon: null, className: undefined };
 
-export const left = { icon: null, className: '' };
-export const center = { icon: null, className: '' };
-export const right = { icon: null, className: '' };
-export const justify = { icon: null, className: '' };
+export const left = { icon: null, className: undefined };
+export const center = { icon: null, className: undefined };
+export const right = { icon: null, className: undefined };
+export const justify = { icon: null, className: undefined };
 
 
-export const link = { icon: null, className: '' };
-export const unlink = { icon: null, className: '' };
+export const link = { icon: null, className: undefined };
+export const unlink = { icon: null, className: undefined };
 
-export const emoji = { icon: null, className: '' };
+export const emoji = { icon: null, className: undefined };
 
-export const image = { icon: null, className: '' };
+export const image = { icon: null, className: undefined };
 
-export const remove = { icon: null, className: '' };
+export const remove = { icon: null, className: undefined };
 
-export const undo = { icon: null, className: '' };
-export const redo = { icon: null, className: '' };
+export const undo = { icon: null, className: undefined };
+export const redo = { icon: null, className: undefined };
 
 export default {
   bold,

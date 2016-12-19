@@ -29,7 +29,7 @@ storiesOf('UzWysiwyg', module)
   .add('Basic', () => (
     <div className="container">
       <h1>
-        Inline Wysiwyg.
+        Basic Wysiwyg.
       </h1>
       <div className="demo-editorSection">
         <Col sm={12}>
@@ -38,6 +38,23 @@ storiesOf('UzWysiwyg', module)
             wrapperClassName="demo-wrapper-relative"
             editorClassName="demo-editor-plain"
             type="basic"
+          />
+        </Col>
+      </div>
+    </div>
+  ))
+  .add('Lite', () => (
+    <div className="container">
+      <h1>
+        Lite Wysiwyg.
+      </h1>
+      <div className="demo-editorSection">
+        <Col sm={12}>
+          <UzWysiwyg
+            toolbarClassName="demo-toolbar-absolute"
+            wrapperClassName="demo-wrapper-relative"
+            editorClassName="demo-editor-plain"
+            type="lite"
           />
         </Col>
       </div>

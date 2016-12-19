@@ -19,3 +19,49 @@
  * @date    2016-12-16
  * @summary empty.
  */
+import {
+  bold,
+  italic,
+  underline,
+  left,
+  center,
+  right,
+  justify,
+  outdent,
+  indent,
+  ordered,
+  unordered,
+  remove,
+} from '../icons';
+
+export default {
+  options: ['inline', 'blockType', 'colorPicker', 'fontSize', 'textAlign', 'list', 'remove'],
+  inline: {
+    options: ['bold', 'italic', 'underline'],
+    bold: { icon: bold.icon, className: bold.className },
+    italic: { icon: italic.icon, className: italic.className },
+    underline: { icon: underline.icon, className: underline.className },
+  },
+  blockType: { className: 'demo-option-custom-wide', dropdownClassName: 'demo-dropdown-custom' },
+  fontSize: { icon: null, className: 'demo-option-custom-medium' },
+  colorPicker: { icon: null, className: undefined, popupClassName: undefined },
+  textAlign: {
+    inDropdown: false,
+    className: undefined,
+    options: ['left', 'center', 'right', 'justify'],
+    left: { icon: left.icon, className: left.className },
+    center: { icon: center.icon, className: left.className },
+    right: { icon: right.icon, className: left.className },
+    justify: { icon: justify.icon, className: left.className },
+  },
+  list: {
+    inDropdown: false,
+    className: undefined,
+    options: ['unordered', 'ordered', 'indent', 'outdent'],
+    unordered: { icon: unordered.icon, className: unordered.className },
+    ordered: { icon: ordered.icon, className: ordered.className },
+    indent: { icon: indent.icon, className: indent.className },
+    outdent: { icon: outdent.icon, className: outdent.className },
+  },
+  remove: { icon: remove.icon, className: remove.className },
+};

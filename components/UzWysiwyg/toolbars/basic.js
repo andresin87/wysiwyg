@@ -19,7 +19,11 @@
  * @date    2016-12-15
  * @summary empty.
  */
-import { bold, italic, underline } from '../icons';
+import {
+  bold,
+  italic,
+  underline,
+} from '../icons';
 
 export default {
   options: ['inline'],
