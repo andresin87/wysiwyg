@@ -27,6 +27,7 @@ import { omit } from 'lodash';
 import { mergeRecursive } from './utils';
 import basicToolbar from './toolbars/basic';
 import liteToolbar from './toolbars/lite';
+import fullToolbar from './toolbars/full';
 import CONSTANTS from './constants';
 
 class UzWysiwyg extends Component {
@@ -45,6 +46,7 @@ class UzWysiwyg extends Component {
         this.toolbar = mergeRecursive(liteToolbar, this.toolbar);
         break;
       case CONSTANTS.types[2]:  // full
+        this.toolbar = mergeRecursive(fullToolbar, this.toolbar);
         break;
       default:
         break;

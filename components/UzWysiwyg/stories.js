@@ -59,4 +59,21 @@ storiesOf('UzWysiwyg', module)
         </Col>
       </div>
     </div>
+  ))
+  .add('Full', () => (
+    <div className="container">
+      <h1>
+        Full Wysiwyg.
+      </h1>
+      <div className="demo-editorSection">
+        <Col sm={12}>
+          <UzWysiwyg
+            toolbarClassName="demo-toolbar-absolute"
+            wrapperClassName="demo-wrapper-relative"
+            editorClassName="demo-editor-plain"
+            type="full"
+          />
+        </Col>
+      </div>
+    </div>
   ));
