@@ -62,10 +62,14 @@ class UzWysiwyg extends Component {
   }
   render() {
     const props = omit(this.props, ['toolbar', 'inline', 'readOnly']);
+    let inline = (this.props.inline === undefined) ? false : Boolean.valueOf(this.props.inline)();
+    if (this.props.readOnly) {
+      inline = (this.props.inline === undefined) ? true : Boolean.valueOf(this.props.inline)();
+    }
     return (
       <Editor
         toolbar={this.toolbar}
-        toolbarOnFocus={this.props.inline}
+        toolbarOnFocus={inline}
         readOnly={this.props.readOnly}
         {...props}
       />

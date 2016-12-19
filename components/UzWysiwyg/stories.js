@@ -24,8 +24,60 @@ import { storiesOf } from '@kadira/storybook';
 import { Col } from 'react-bootstrap';
 
 import { UzWysiwyg } from '../';
+import initialContentState from './utils/sampleEditorContent';
 
 storiesOf('UzWysiwyg', module)
+  .add('Default', () => (
+    <div className="container">
+      <h1>
+        Default Wysiwyg.
+      </h1>
+      <div className="demo-editorSection">
+        <Col sm={12}>
+          <UzWysiwyg
+            initialContentState={initialContentState}
+          />
+        </Col>
+      </div>
+    </div>
+  ))
+  .add('Inline', () => (
+    <div className="container">
+      <h1>
+        Inline Wysiwyg.
+      </h1>
+      <div className="demo-editorSection">
+        <Col sm={12}>
+          <UzWysiwyg
+            inline="false"
+            initialContentState={initialContentState}
+          />
+        </Col>
+      </div>
+    </div>
+  ))
+  .add('ReadOnly', () => (
+    <div className="container">
+      <h1>
+        Read-Only Wysiwyg.
+      </h1>
+      <div className="demo-editorSection">
+        <Col sm={12}>
+          <h5>Deafult inline (no toolbar):</h5>
+          <UzWysiwyg
+            readOnly
+            initialContentState={initialContentState}
+          />
+          <h5>Force visual toolbar:</h5>
+          <UzWysiwyg
+            inline="false"
+            readOnly
+            initialContentState={initialContentState}
+          />
+        </Col>
+      </div>
+    </div>
+  ))
   .add('Basic', () => (
     <div className="container">
       <h1>
